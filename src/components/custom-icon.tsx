@@ -6,10 +6,7 @@ export interface CustomIconProps {
 }
 
 export default function CustomIcon(props: CustomIconProps) {
-  const alt = 'Card image';
   const className = 'dark:brightness-0 dark:invert-[1] h-[6rem] w-[6rem]';
-  const height = 50;
-  const width = 50;
 
   if (!props.icon) {
     return <></>;
