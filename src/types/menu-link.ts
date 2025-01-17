@@ -1,5 +1,5 @@
 export type MenuLink = {
-    title: string,
-    ptTitle?: string,
-    href?: string,
-}
+  title: string;
+  ptTitle?: string;
+  href?: string;
+};
