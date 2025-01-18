@@ -23,8 +23,12 @@ export function LangToggle() {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        <DropdownMenuItem onClick={() => setLang?.('en')}>English</DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setLang?.('pt')}>Portuguese</DropdownMenuItem>
+        <DropdownMenuItem onClick={() => setLang?.('en')}>
+          {lang === 'pt' ? 'Inglês' : 'English'}
+        </DropdownMenuItem>
+        <DropdownMenuItem onClick={() => setLang?.('pt')}>
+          {lang === 'pt' ? 'Português' : 'Portuguese'}
+        </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );

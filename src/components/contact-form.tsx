@@ -16,19 +16,22 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
+import { useLanguage } from '@/components/lang-provider';
 
-const email = 'arturdev@duck.com';
-
-const formSchema = z.object({
-  subject: z.string().min(1, {
-    message: 'Subject is required',
-  }),
-  msg: z.string().min(1, {
-    message: 'Message is required',
-  }),
-});
+const email = 'artur@techcraftsmen.dev';
 
 export default function ContactForm() {
+  const { lang } = useLanguage();
+
+  const formSchema = z.object({
+    subject: z.string().min(1, {
+      message: lang === 'pt' ? 'Digite o assunto' : 'Subject is required',
+    }),
+    msg: z.string().min(1, {
+      message: lang === 'pt' ? 'Digite a mensagem' : 'Message is required',
+    }),
+  });
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -53,9 +56,12 @@ export default function ContactForm() {
           name="subject"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Subject</FormLabel>
+              <FormLabel>{lang === 'pt' ? 'Assunto' : 'Subject'}</FormLabel>
               <FormControl>
-                <Input placeholder="Enter the subject" {...field} />
+                <Input
+                  placeholder={lang === 'pt' ? 'Digite o assunto' : 'Enter the subject'}
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -66,18 +72,25 @@ export default function ContactForm() {
           name="msg"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Message</FormLabel>
+              <FormLabel>{lang === 'pt' ? 'Mensagem' : 'Message'}</FormLabel>
               <FormControl>
-                <Textarea placeholder="Enter your message" {...field} />
+                <Textarea
+                  placeholder={lang === 'pt' ? 'Digite a mensagem' : 'Enter your message'}
+                  {...field}
+                />
               </FormControl>
-              <FormDescription>Your message will be sent through email</FormDescription>
+              <FormDescription>
+                {lang === 'pt'
+                  ? 'Sua mensagem será enviada por e-mail'
+                  : 'Your message will be sent through email'}
+              </FormDescription>
               <FormMessage />
             </FormItem>
           )}
         />
         <div />
         <Button className="w-full" type="submit">
-          Submit
+          {lang === 'pt' ? 'Enviar' : 'Submit'}
         </Button>
       </form>
     </Form>

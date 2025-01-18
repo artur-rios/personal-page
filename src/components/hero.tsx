@@ -50,7 +50,7 @@ export default function HeroHeader() {
                 Atualmente trabalho em um projeto para o banco{' '}
                 <a href="https://www.btgpactual.com/" className="underline">
                   BTG Pactual
-                </a>
+                </a>{' '}
                 empregado pela{' '}
                 <a href="https://www.brq.com/" className="underline">
                   BRQ Digital Solutions
