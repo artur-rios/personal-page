@@ -87,7 +87,7 @@ export default function Navbar() {
                 <li key={link.title}>
                   <Link
                     className="hover:underline"
-                    href={lang === 'pt' ? link.ptHref || '' : link.href || ''}
+                    href={lang === 'pt' ? link.ptHref || link.href || '' : link.href || ''}
                     onClick={handleClick}
                   >
                     {lang === 'pt' && link.ptTitle ? link.ptTitle : link.title}
