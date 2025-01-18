@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import './globals.css';
-import React from 'react';
+import React, { Suspense } from 'react';
 import { ThemeProvider } from '@/components/theme-provider';
 import Navbar from '@/components/navbar';
 import Footer from '@/components/footer';
@@ -28,13 +28,15 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`flex min-h-screen flex-col bg-background text-primary`}>
-        <LangProvider>
-          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-            <Navbar />
-            {children}
-            <Footer />
-          </ThemeProvider>
-        </LangProvider>
+        <Suspense>
+          <LangProvider>
+            <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+              <Navbar />
+              {children}
+              <Footer />
+            </ThemeProvider>
+          </LangProvider>
+        </Suspense>
       </body>
     </html>
   );
