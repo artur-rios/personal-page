@@ -3,8 +3,8 @@ import { MenuLink } from '@/types/menu-link';
 export const navLinks: MenuLink[] = [
   {
     title: 'Blog',
-    href: 'https://www.techcraftsman.blog/',
-    ptHref: 'https://pt.techcraftsman.blog/',
+    href: 'https://blog.artur-rios.tech/',
+    ptHref: 'https://ptblog.artur-rios.tech/',
   },
   {
     title: 'Resume',

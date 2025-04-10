@@ -18,7 +18,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useLanguage } from '@/components/lang-provider';
 
-const email = 'artur@techcraftsmen.dev';
+const email = 'arturdev@duck.com';
 
 export default function ContactForm() {
   const { lang } = useLanguage();
