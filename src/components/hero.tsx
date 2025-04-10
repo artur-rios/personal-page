@@ -40,7 +40,7 @@ export default function HeroHeader() {
                 lang="pt"
               >
                 Meu nome é Artur Rios. Trabalho como Desenvolvedor de Software Fullstack
-                desde de 2018. Sou apaixonado por resolver problemas usando tecnologia, e
+                desde 2018. Sou apaixonado por resolver problemas usando tecnologia, e
                 aprender coisas novas no processo.
               </h2>
               <h2
