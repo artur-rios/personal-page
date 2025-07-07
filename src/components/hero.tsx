@@ -28,7 +28,7 @@ export default function HeroHeader() {
                 </a>
                 .
                 <br/>
-                Know more about me on the links below or contact me if that makes sense.
+                Know more about me on the links or contact me if that makes sense.
               </h2>
             </>
           )}
@@ -59,7 +59,7 @@ export default function HeroHeader() {
                 </a>
                 .
                 <br/>
-                  Saiba mais sobre mim nos links acima ou entre em contato se fizer sentido.
+                  Saiba mais sobre mim nos links ou entre em contato se fizer sentido.
               </h2>
             </>
           )}
