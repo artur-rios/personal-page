@@ -26,7 +26,9 @@ export default function HeroHeader() {
                 <a href="https://www.brq.com/" className="underline">
                   BRQ Digital Solutions
                 </a>
-                . My experience goes from startups to giant companies.
+                .
+                <br/>
+                Know more about me on the links below or contact me if that makes sense.
               </h2>
             </>
           )}
@@ -55,7 +57,9 @@ export default function HeroHeader() {
                 <a href="https://www.brq.com/" className="underline">
                   BRQ Digital Solutions
                 </a>
-                . Minha experiência vai desde startups até empresas gigantes.
+                .
+                <br/>
+                  Saiba mais sobre mim nos links acima ou entre em contato se fizer sentido.
               </h2>
             </>
           )}
