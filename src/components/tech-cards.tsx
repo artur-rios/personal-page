@@ -33,6 +33,35 @@ export const techCards: ContentSection = {
       subtext: `Node | Angular | React`,
       icon: 'typescript',
     },
+    {
+      text: `Python`,
+      subtext: `CLIs | Scripts`,
+      icon: 'python',
+    },
+  ],
+};
+
+export const cloudCards: ContentSection = {
+  header: `Cloud Providers I work with`,
+  ptHeader: `Provedores de Nuvem com os quais trabalho`,
+  subheader: `Cloud platforms I have professional experience`,
+  ptSubheader: `Plataformas de nuvem nas quais possuo experiência profissional`,
+  content: [
+    {
+      text: `AWS`,
+      subtext: `ApiGateway | CloudFormation | Lambda | RDS | S3 | SNS | SQS`,
+      icon: 'aws',
+    },
+    {
+      text: `Azure`,
+      subtext: `DevOps | Functions`,
+      icon: 'azure',
+    },
+    {
+      text: `Digital Ocean`,
+      subtext: `Droplets | Managed Databases`,
+      icon: 'digital-ocean',
+    },
   ],
 };
 
@@ -47,8 +76,31 @@ export default function TechCards() {
         >
           {lang === 'pt' ? techCards.ptHeader : techCards.header}
         </HeadingText>
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-4">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-5">
           {techCards.content.map((cards) => {
+            return (
+              <Card
+                key={cards.text}
+                className="flex flex-grow flex-col items-center justify-between gap-4 p-8 dark:bg-secondary"
+              >
+                <div className="flex">
+                  <CustomIcon icon={cards.icon} />
+                </div>
+                <div className="space-y-2">
+                  <CardTitle>{cards.text}</CardTitle>
+                  <CardDescription>{cards.subtext}</CardDescription>
+                </div>
+              </Card>
+            );
+          })}
+        </div>
+        <HeadingText
+          subtext={lang === 'pt' ? cloudCards.ptSubheader : cloudCards.subheader}
+        >
+          {lang === 'pt' ? cloudCards.ptHeader : cloudCards.header}
+        </HeadingText>
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+          {cloudCards.content.map((cards) => {
             return (
               <Card
                 key={cards.text}
