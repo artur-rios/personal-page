@@ -4,7 +4,7 @@ export const navLinks: MenuLink[] = [
   {
     title: 'Blog',
     href: 'https://blog.artur-rios.tech/',
-    ptHref: 'https://ptblog.artur-rios.tech/',
+    ptHref: 'https://blog.artur-rios.tech/pt',
   },
   {
     title: 'Resume',
