@@ -1,12 +1,16 @@
 import Image from 'next/image';
 import React from 'react';
+import { cn } from '@/lib/utils';
 
 export interface CustomIconProps {
   icon?: string;
+  className?: string;
 }
 
 export default function CustomIcon(props: CustomIconProps) {
-  const className = 'dark:brightness-0 dark:invert-[1] h-[6rem] w-[6rem]';
+  const base = 'dark:brightness-0 dark:invert-[1]';
+  const defaultSize = 'h-[6rem] w-[6rem]';
+  const className = cn(base, props.className ?? defaultSize);
 
   if (!props.icon) {
     return <></>;
