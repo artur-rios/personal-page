@@ -7,7 +7,6 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { Button } from '@/components/ui/button';
-import { GiBrazilFlag, GiUsaFlag } from 'react-icons/gi';
 import { useLanguage } from '@/components/lang-provider';
 
 export function LangToggle() {
@@ -17,8 +16,9 @@ export function LangToggle() {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="outline" size="icon">
-          {lang === 'en' && <GiUsaFlag className={`h-[1.2rem] w-[1.2rem]`} />}
-          {lang === 'pt' && <GiBrazilFlag className={`h-[1.2rem] w-[1.2rem]`} />}
+          <span className="text-sm font-bold tracking-wide">
+            {lang === 'en' ? 'EN' : 'PT'}
+          </span>
           <span className="sr-only">Toggle language</span>
         </Button>
       </DropdownMenuTrigger>
