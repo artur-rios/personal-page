@@ -2,7 +2,7 @@
 
 import HeadingText from '@/components/heading-text';
 import { Card, CardTitle } from '@/components/ui/card';
-import React from 'react';
+import React, { useState } from 'react';
 import { ContentSection } from '@/types/content-section';
 import CustomIcon from '@/components/custom-icon';
 import { useLanguage } from '@/components/lang-provider';
@@ -75,15 +75,33 @@ export const cloudCards: ContentSection = {
 
 function DetailTags({ subtext }: { subtext: string }) {
   const tags = subtext.split(/\s*\|\s*/).filter(Boolean);
+  const VISIBLE_LIMIT = 3;
+  const [expanded, setExpanded] = useState(false);
+
+  const hasOverflow = tags.length > VISIBLE_LIMIT;
+  const visibleTags = hasOverflow && !expanded ? tags.slice(0, VISIBLE_LIMIT) : tags;
+  const hiddenCount = tags.length - VISIBLE_LIMIT;
+
   return (
     <ul className="flex min-h-[2.75rem] flex-wrap items-center justify-center gap-1.5">
-      {tags.map((tag) => (
+      {visibleTags.map((tag) => (
         <li key={tag}>
           <span className="inline-block rounded-md border border-border/80 bg-muted/70 px-2 py-0.5 text-xs font-medium text-muted-foreground dark:bg-muted/50 dark:border-border/60">
             {tag.trim()}
           </span>
         </li>
       ))}
+      {hasOverflow && (
+        <li>
+          <button
+            type="button"
+            onClick={() => setExpanded((prev) => !prev)}
+            className="inline-block cursor-pointer rounded-md border border-border/80 bg-muted/70 px-2 py-0.5 text-xs font-medium text-primary hover:bg-muted dark:bg-muted/50 dark:border-border/60"
+          >
+            {expanded ? 'show less' : `+${hiddenCount} more`}
+          </button>
+        </li>
+      )}
     </ul>
   );
 }
