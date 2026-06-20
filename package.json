@@ -6,7 +6,7 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "eslint src",
     "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc"
   },
   "dependencies": {
@@ -31,13 +31,13 @@
     "zod": "latest"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "latest",
+    "@eslint/eslintrc": "^3.3.5",
     "@types/node": "^26.0.0",
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
     "baseline-browser-mapping": "^2.10.38",
-    "eslint": "latest",
-    "eslint-config-next": "latest",
+    "eslint": "^10.5.0",
+    "eslint-config-next": "^16.2.9",
     "postcss": "latest",
     "tailwindcss": "latest",
     "typescript": "^6.0.3"
