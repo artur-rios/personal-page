@@ -8,7 +8,7 @@ export interface CustomIconProps {
 }
 
 export default function CustomIcon(props: CustomIconProps) {
-  const base = 'dark:brightness-0 dark:invert-[1]';
+  const base = 'dark:brightness-0 dark:invert';
   const defaultSize = 'h-[6rem] w-[6rem]';
   const className = cn(base, props.className ?? defaultSize);
 
