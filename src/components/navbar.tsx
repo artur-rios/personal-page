@@ -97,7 +97,7 @@ export default function Navbar() {
             </ul>
           </div>
         </div>
-        <div className="hidden md:block">
+        <div className="hidden md:flex md:items-center md:gap-1">
           <ThemeToggle />
           <LangToggle />
         </div>

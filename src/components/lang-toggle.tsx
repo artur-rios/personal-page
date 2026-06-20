@@ -15,8 +15,8 @@ export function LangToggle() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline" size="sm">
-          <span className="text-sm font-bold tracking-wide">
+        <Button variant="outline" size="icon">
+          <span className="text-xs font-bold">
             {lang === 'en' ? 'EN' : 'PT'}
           </span>
           <span className="sr-only">Toggle language</span>
