@@ -24,12 +24,8 @@ export default function ContactForm() {
   const { lang } = useLanguage();
 
   const formSchema = z.object({
-    subject: z.string().min(1, {
-      message: lang === 'pt' ? 'Digite o assunto' : 'Subject is required',
-    }),
-    msg: z.string().min(1, {
-      message: lang === 'pt' ? 'Digite a mensagem' : 'Message is required',
-    }),
+    subject: z.string().min(1, lang === 'pt' ? 'Digite o assunto' : 'Subject is required'),
+    msg: z.string().min(1, lang === 'pt' ? 'Digite a mensagem' : 'Message is required'),
   });
 
   const form = useForm<z.infer<typeof formSchema>>({
