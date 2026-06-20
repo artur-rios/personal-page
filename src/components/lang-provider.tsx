@@ -7,9 +7,13 @@ export interface LangProviderProps {
   children?: React.ReactNode;
 }
 
+type Language = 'en' | 'pt';
+
+const VALID_LANGS: Language[] = ['en', 'pt'];
+
 export interface LangProviderState {
-  lang?: string;
-  setLang?: React.Dispatch<React.SetStateAction<string>>;
+  lang?: Language;
+  setLang?: React.Dispatch<React.SetStateAction<Language>>;
 }
 
 const LanguageContext = createContext<LangProviderState>({
@@ -20,9 +24,10 @@ const LanguageContext = createContext<LangProviderState>({
 export const LangProvider = (props: LangProviderProps) => {
   const searchParams = useSearchParams();
 
-  const language = searchParams.get('lang') || 'en';
+  const raw = searchParams.get('lang');
+  const language: Language = VALID_LANGS.includes(raw as Language) ? (raw as Language) : 'en';
 
-  const [lang, setLang] = useState(language);
+  const [lang, setLang] = useState<Language>(language);
 
   useEffect(() => {
     const updatedSearchParams = new URLSearchParams(searchParams.toString());

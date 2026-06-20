@@ -73,19 +73,19 @@ export const cloudCards: ContentSection = {
   ],
 };
 
+const VISIBLE_LIMIT = 3;
+
 function DetailTags({ subtext }: { subtext: string }) {
   const tags = subtext.split(/\s*\|\s*/).filter(Boolean);
-  const VISIBLE_LIMIT = 3;
   const [expanded, setExpanded] = useState(false);
 
   const hasOverflow = tags.length > VISIBLE_LIMIT;
   const visibleTags = hasOverflow && !expanded ? tags.slice(0, VISIBLE_LIMIT) : tags;
-  const hiddenCount = tags.length - VISIBLE_LIMIT;
 
   return (
     <ul className="flex min-h-[2.75rem] flex-wrap items-center justify-center gap-1.5">
-      {visibleTags.map((tag) => (
-        <li key={tag}>
+      {visibleTags.map((tag, i) => (
+        <li key={i}>
           <span className="inline-block rounded-md border border-border/80 bg-muted/70 px-2 py-0.5 text-xs font-medium text-muted-foreground dark:bg-muted/50 dark:border-border/60">
             {tag.trim()}
           </span>
@@ -98,7 +98,7 @@ function DetailTags({ subtext }: { subtext: string }) {
             onClick={() => setExpanded((prev) => !prev)}
             className="inline-block cursor-pointer rounded-md border border-border/80 bg-muted/70 px-2 py-0.5 text-xs font-medium text-primary hover:bg-muted dark:bg-muted/50 dark:border-border/60"
           >
-            {expanded ? 'show less' : `+${hiddenCount} more`}
+            {expanded ? 'show less' : `+${tags.length - VISIBLE_LIMIT} more`}
           </button>
         </li>
       )}
@@ -179,7 +179,7 @@ export default function TechCards() {
         >
           {lang === 'pt' ? cloudCards.ptHeader : cloudCards.header}
         </HeadingText>
-        <div className="grid grid-cols-2 items-stretch gap-3 xs:gap-4 sm:grid-cols-2 sm:gap-4 md:gap-5 lg:grid-cols-3 lg:gap-6">
+        <div className="grid grid-cols-2 items-stretch gap-3 sm:gap-4 md:gap-5 lg:grid-cols-3 lg:gap-6">
           {cloudCards.content.map((card) => (
             <TechCard
               key={card.text}
