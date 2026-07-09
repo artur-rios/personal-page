@@ -9,7 +9,8 @@ import {
   CardContent,
   CardFooter,
 } from '@/components/ui/card';
-import { ExternalLink, Github } from 'lucide-react';
+import { ExternalLink } from 'lucide-react';
+import { FaGithub } from 'react-icons/fa';
 import { useLanguage } from '@/components/lang-provider';
 import { Button } from '@/components/ui/button';
 
@@ -70,7 +71,7 @@ export default function ProjectCard({ project }: { project: Project }) {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Github className="h-4 w-4" />
+            <FaGithub className="h-4 w-4" />
             GitHub
           </a>
         </Button>

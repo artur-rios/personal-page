@@ -39,7 +39,7 @@ export const techCards: ContentSection = {
     },
     {
       text: `Python`,
-      subtext: `CLIs | Scripts`,
+      subtext: `Pandas | NumPy | PySpark`,
       icon: 'python',
       docUrl: 'https://docs.python.org/3/',
     },
