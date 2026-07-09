@@ -86,7 +86,7 @@ function DetailTags({ subtext }: { subtext: string }) {
     <ul className="flex min-h-[2.75rem] flex-wrap items-center justify-center gap-1.5">
       {visibleTags.map((tag, i) => (
         <li key={i}>
-          <span className="inline-block rounded-md border border-border/80 bg-muted/70 px-2 py-0.5 text-xs font-medium text-muted-foreground dark:bg-muted/50 dark:border-border/60">
+          <span className="inline-block rounded-full border border-border/60 bg-muted/60 px-2.5 py-0.5 text-xs font-medium text-muted-foreground transition-colors hover:border-border hover:bg-muted dark:bg-muted/40 dark:border-border/50">
             {tag.trim()}
           </span>
         </li>
@@ -96,7 +96,7 @@ function DetailTags({ subtext }: { subtext: string }) {
           <button
             type="button"
             onClick={() => setExpanded((prev) => !prev)}
-            className="inline-block cursor-pointer rounded-md border border-border/80 bg-muted/70 px-2 py-0.5 text-xs font-medium text-primary hover:bg-muted dark:bg-muted/50 dark:border-border/60"
+            className="inline-block cursor-pointer rounded-full border border-border/60 bg-muted/60 px-2.5 py-0.5 text-xs font-medium text-primary transition-colors hover:bg-muted dark:bg-muted/40 dark:border-border/50"
           >
             {expanded ? 'show less' : `+${tags.length - VISIBLE_LIMIT} more`}
           </button>
@@ -118,7 +118,7 @@ function TechCard({
   docUrl?: string;
 }) {
   const titleNode = (
-    <CardTitle className="mt-2 shrink-0 text-center text-base font-semibold sm:mt-3 sm:text-lg">
+    <CardTitle className="mt-3 shrink-0 text-center text-base font-semibold sm:mt-4 sm:text-lg">
       {docUrl ? (
         <a
           href={docUrl}
@@ -135,17 +135,17 @@ function TechCard({
   );
 
   return (
-    <Card className="flex h-full flex-col items-center rounded-xl border bg-card p-4 shadow-sm dark:bg-secondary sm:p-5 md:p-6 lg:p-8">
-      <div className="flex h-16 w-16 shrink-0 items-center justify-center sm:h-20 sm:w-20 md:h-24 md:w-24">
+    <Card className="group flex h-full flex-col items-center rounded-xl border bg-card p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md dark:bg-secondary sm:p-6 md:p-7 lg:p-8">
+      <div className="flex h-20 w-20 shrink-0 items-center justify-center sm:h-24 sm:w-24 md:h-28 md:w-28">
         {icon && (
           <CustomIcon
             icon={icon}
-            className="h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14 lg:h-16 lg:w-16"
+            className="h-14 w-14 transition-transform duration-300 group-hover:scale-110 sm:h-16 sm:w-16 md:h-20 md:w-20"
           />
         )}
       </div>
       {titleNode}
-      <div className="mt-2 w-full shrink-0 sm:mt-3">
+      <div className="mt-3 w-full shrink-0 sm:mt-4">
         <DetailTags subtext={subtext} />
       </div>
     </Card>
@@ -157,13 +157,13 @@ export default function TechCards() {
 
   return (
     <section>
-      <div className="container space-y-10 py-12 text-center sm:space-y-12 lg:py-20 lg:space-y-14">
+      <div className="container space-y-12 py-12 text-center sm:space-y-16 lg:py-24 lg:space-y-20">
         <HeadingText
           subtext={lang === 'pt' ? techCards.ptSubheader : techCards.subheader}
         >
           {lang === 'pt' ? techCards.ptHeader : techCards.header}
         </HeadingText>
-        <div className="grid grid-cols-2 items-stretch gap-3 sm:gap-4 md:grid-cols-3 md:gap-5 lg:grid-cols-5 lg:gap-6">
+        <div className="grid grid-cols-2 items-stretch gap-4 sm:grid-cols-3 sm:gap-5 md:gap-6 lg:grid-cols-5 lg:gap-6">
           {techCards.content.map((card) => (
             <TechCard
               key={card.text}
@@ -179,7 +179,7 @@ export default function TechCards() {
         >
           {lang === 'pt' ? cloudCards.ptHeader : cloudCards.header}
         </HeadingText>
-        <div className="grid grid-cols-2 items-stretch gap-3 sm:gap-4 md:gap-5 lg:grid-cols-3 lg:gap-6">
+        <div className="mx-auto grid max-w-3xl grid-cols-1 items-stretch gap-4 sm:grid-cols-2 sm:gap-5 md:gap-6 lg:grid-cols-3 lg:gap-6">
           {cloudCards.content.map((card) => (
             <TechCard
               key={card.text}
