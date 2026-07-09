@@ -89,6 +89,9 @@ export default function Navbar() {
                     className="hover:underline"
                     href={lang === 'pt' ? link.ptHref || link.href || '' : link.href || ''}
                     onClick={handleClick}
+                    {...(link.href?.startsWith('http')
+                      ? { target: '_blank', rel: 'noopener noreferrer' }
+                      : {})}
                   >
                     {lang === 'pt' && link.ptTitle ? link.ptTitle : link.title}
                   </Link>
