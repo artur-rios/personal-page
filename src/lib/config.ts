@@ -21,6 +21,11 @@ export const navLinks: MenuLink[] = [
     href: 'https://www.linkedin.com/in/artur-rios',
   },
   {
+    title: 'Projects',
+    ptTitle: 'Projetos',
+    href: '/projects',
+  },
+  {
     title: 'Contact',
     ptTitle: 'Contato',
     href: '/contact',
