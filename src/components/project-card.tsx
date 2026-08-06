@@ -23,6 +23,15 @@ export default function ProjectCard({ project }: { project: Project }) {
 
   const previewUrl = `https://opengraph.githubassets.com/1/${project.repoOwner}/${project.repoName}`;
 
+  const websiteLabel =
+    project.websiteLabel === 'docs'
+      ? lang === 'pt'
+        ? 'Documentação'
+        : 'Docs'
+      : lang === 'pt'
+        ? 'Site'
+        : 'Website';
+
   return (
     <Card className="group flex h-full flex-col overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
       <div className="relative aspect-video w-full overflow-hidden border-b bg-muted/30 dark:bg-muted/20">
@@ -61,7 +70,7 @@ export default function ProjectCard({ project }: { project: Project }) {
               rel="noopener noreferrer"
             >
               <ExternalLink className="h-4 w-4" />
-              Website
+              {websiteLabel}
             </a>
           </Button>
         )}
