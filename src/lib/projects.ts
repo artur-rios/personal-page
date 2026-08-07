@@ -170,12 +170,14 @@ export const projects: Project[] = [
     tech: ['Rust', 'PowerShell'],
   },
   {
-    title: 'Alexandria Desktop Front',
-    description: 'Desktop front-end for the Alexandria API.',
-    ptDescription: 'Front-end desktop para a Alexandria API.',
-    githubUrl: 'https://github.com/artur-rios/alexandria-desktop-front',
+    title: 'Alexandria UI',
+    description:
+      "The cross-platform desktop front-end for Alexandria API, a personal library system that indexes, organizes, and surfaces a single person's on-disk media and documents.",
+    ptDescription:
+      'FA interface desktop multiplataforma para a Alexandria API, um sistema de biblioteca pessoal que indexa, organiza e disponibiliza os arquivos de mídia e documentos armazenados em disco de uma única pessoa.',
+    githubUrl: 'https://github.com/artur-rios/alexandria-ui',
     repoOwner: 'artur-rios',
-    repoName: 'alexandria-desktop-front',
+    repoName: 'alexandria-ui',
     tech: [],
   },
   {
@@ -202,7 +204,8 @@ export const projects: Project[] = [
   },
   {
     title: 'Identity Manager API',
-    description: 'A centralized identity management API built with ASP.NET Core (.NET 10).',
+    description:
+      'A centralized identity management API built with ASP.NET Core (.NET 10).',
     ptDescription:
       'Uma API centralizada de gerenciamento de identidade construída com ASP.NET Core (.NET 10).',
     githubUrl: 'https://github.com/artur-rios/identity-manager-api',
@@ -245,7 +248,8 @@ export const projects: Project[] = [
   },
   {
     title: 'Python Dotnet Tools',
-    description: 'A lightweight Python CLI that streamlines common .NET project workflows.',
+    description:
+      'A lightweight Python CLI that streamlines common .NET project workflows.',
     ptDescription:
       'Uma CLI leve em Python que simplifica fluxos de trabalho comuns em projetos .NET.',
     githubUrl: 'https://github.com/artur-rios/python-dotnet-tools',
