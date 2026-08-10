@@ -1,4 +1,5 @@
 import { Project } from '@/types/project';
+import { ProjectGroup } from '@/types/project-group';
 
 export const dotnetLibraries: Project[] = [
   {
@@ -258,3 +259,68 @@ export const projects: Project[] = [
     tech: ['Python', 'CLI'],
   },
 ];
+
+export const projectGroups: ProjectGroup[] = [
+  {
+    slug: 'alexandria',
+    title: 'Alexandria',
+    overview:
+      'A personal library system that indexes, organizes, and surfaces on-disk media and documents.',
+    ptOverview:
+      'Um sistema de biblioteca pessoal que indexa, organiza e disponibiliza arquivos de mídia e documentos.',
+    projectRepoNames: ['alexandria-api', 'alexandria-ui'],
+  },
+  {
+    slug: 'maestro',
+    title: 'Maestro',
+    overview:
+      'A desktop application and CLI for designing and running AI-agent workflows.',
+    ptOverview:
+      'Uma aplicação desktop e CLI para desenhar e executar fluxos de trabalho de agentes de IA.',
+    projectRepoNames: ['maestro', 'maestro-cli'],
+  },
+  {
+    slug: 'cli-tools',
+    title: 'CLI Tools',
+    ptTitle: 'Ferramentas CLI',
+    overview:
+      'A collection of cross-platform CLI toolkits for streamlining development workflows.',
+    ptOverview:
+      'Uma coleção de kits de ferramentas CLI multiplataforma para simplificar fluxos de trabalho.',
+    projectRepoNames: ['cli-utils', 'dotnet-tools', 'python-dotnet-tools'],
+  },
+  {
+    slug: 'ai-coding-skills',
+    title: 'AI Coding Skills',
+    overview:
+      'A collection of reusable agent skills for AI coding assistants.',
+    ptOverview:
+      'Uma coleção de skills reutilizáveis para assistentes de programação com IA.',
+    projectRepoNames: ['ai-coding-skills'],
+  },
+  {
+    slug: 'heimdall-api',
+    title: 'Heimdall API',
+    overview:
+      'A centralized identity management API built with ASP.NET Core (.NET 10).',
+    ptOverview:
+      'Uma API centralizada de gerenciamento de identidade construída com ASP.NET Core (.NET 10).',
+    projectRepoNames: ['heimdall-api'],
+  },
+  {
+    slug: 'ml-accounting-reconciliation',
+    title: 'ML Accounting Reconciliation',
+    ptTitle: 'Conciliação Contábil com ML',
+    overview:
+      'Automates financial reconciliation using supervised machine learning.',
+    ptOverview:
+      'Automatiza a conciliação financeira usando aprendizado de máquina supervisionado.',
+    projectRepoNames: ['ml-accounting-reconciliation'],
+  },
+];
+
+export function getGroupProjects(group: ProjectGroup): Project[] {
+  return group.projectRepoNames
+    .map((name) => projects.find((p) => p.repoName === name))
+    .filter((p): p is Project => p !== undefined);
+}
