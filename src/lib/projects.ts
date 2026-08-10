@@ -203,14 +203,14 @@ export const projects: Project[] = [
     tech: ['PowerShell', 'Shell', 'Batch'],
   },
   {
-    title: 'Identity Manager API',
+    title: 'Heimdall API',
     description:
       'A centralized identity management API built with ASP.NET Core (.NET 10).',
     ptDescription:
       'Uma API centralizada de gerenciamento de identidade construída com ASP.NET Core (.NET 10).',
-    githubUrl: 'https://github.com/artur-rios/identity-manager-api',
+    githubUrl: 'https://github.com/artur-rios/heimdall-api',
     repoOwner: 'artur-rios',
-    repoName: 'identity-manager-api',
+    repoName: 'heimdall-api',
     tech: ['C#', 'ASP.NET Core', '.NET 10'],
   },
   {
