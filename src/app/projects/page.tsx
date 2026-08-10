@@ -2,8 +2,8 @@
 
 import Link from 'next/link';
 import HeadingText from '@/components/heading-text';
-import { dotnetLibraries, projects } from '@/lib/projects';
-import ProjectCard from '@/components/project-card';
+import { dotnetLibraries, projectGroups } from '@/lib/projects';
+import ProjectGroupCard from '@/components/project-group-card';
 import { useLanguage } from '@/components/lang-provider';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -25,6 +25,12 @@ export default function ProjectsPage() {
           {lang === 'pt' ? 'Projetos' : 'Projects'}
         </HeadingText>
 
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-8 lg:grid-cols-3">
+          {projectGroups.map((group) => (
+            <ProjectGroupCard key={group.slug} group={group} />
+          ))}
+        </div>
+
         <Card className="overflow-hidden transition-all duration-300 hover:shadow-md">
           <CardContent className="flex flex-col gap-4 p-6 sm:flex-row sm:items-center sm:justify-between sm:p-8">
             <div className="space-y-2">
@@ -45,17 +51,6 @@ export default function ProjectsPage() {
             </Button>
           </CardContent>
         </Card>
-
-        <div className="space-y-6 sm:space-y-8">
-          <h2 className="text-2xl font-bold text-primary lg:text-3xl">
-            {lang === 'pt' ? 'Outros projetos' : 'Other projects'}
-          </h2>
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-8 lg:grid-cols-3">
-            {projects.map((project) => (
-              <ProjectCard key={project.repoName} project={project} />
-            ))}
-          </div>
-        </div>
       </div>
     </main>
   );
