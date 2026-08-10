@@ -317,10 +317,22 @@ export const projectGroups: ProjectGroup[] = [
       'Automatiza a conciliação financeira usando aprendizado de máquina supervisionado.',
     projectRepoNames: ['ml-accounting-reconciliation'],
   },
+  {
+    slug: 'dotnet-libraries',
+    title: '.NET Libraries',
+    ptTitle: 'Bibliotecas .NET',
+    overview:
+      'A family of open source libraries to speed up .NET development.',
+    ptOverview:
+      'Uma família de bibliotecas open source para acelerar o desenvolvimento em .NET.',
+    projectRepoNames: dotnetLibraries.map((l) => l.repoName),
+  },
 ];
+
+const allProjects: Project[] = [...projects, ...dotnetLibraries];
 
 export function getGroupProjects(group: ProjectGroup): Project[] {
   return group.projectRepoNames
-    .map((name) => projects.find((p) => p.repoName === name))
+    .map((name) => allProjects.find((p) => p.repoName === name))
     .filter((p): p is Project => p !== undefined);
 }

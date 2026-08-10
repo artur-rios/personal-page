@@ -1,13 +1,9 @@
 'use client';
 
-import Link from 'next/link';
 import HeadingText from '@/components/heading-text';
-import { dotnetLibraries, projectGroups } from '@/lib/projects';
+import { projectGroups } from '@/lib/projects';
 import ProjectGroupCard from '@/components/project-group-card';
 import { useLanguage } from '@/components/lang-provider';
-import { Card, CardContent } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { ArrowRight } from 'lucide-react';
 
 export default function ProjectsPage() {
   const { lang } = useLanguage();
@@ -30,27 +26,6 @@ export default function ProjectsPage() {
             <ProjectGroupCard key={group.slug} group={group} />
           ))}
         </div>
-
-        <Card className="overflow-hidden transition-all duration-300 hover:shadow-md">
-          <CardContent className="flex flex-col gap-4 p-6 sm:flex-row sm:items-center sm:justify-between sm:p-8">
-            <div className="space-y-2">
-              <h3 className="text-xl font-semibold text-primary sm:text-2xl">
-                {lang === 'pt' ? 'Bibliotecas .NET' : '.NET libraries'}
-              </h3>
-              <p className="text-sm leading-relaxed text-muted-foreground sm:text-base">
-                {lang === 'pt'
-                  ? `Uma família de ${dotnetLibraries.length} bibliotecas open source para acelerar o desenvolvimento em .NET.`
-                  : `A family of ${dotnetLibraries.length} open source libraries to speed up .NET development.`}
-              </p>
-            </div>
-            <Button asChild className="gap-1.5 sm:shrink-0">
-              <Link href="/projects/dotnet-libraries">
-                {lang === 'pt' ? 'Ver bibliotecas' : 'View libraries'}
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-            </Button>
-          </CardContent>
-        </Card>
       </div>
     </main>
   );
