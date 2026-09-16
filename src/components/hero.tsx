@@ -15,13 +15,9 @@ export default function HeroHeader() {
               <h2 className="text-lg font-light text-muted-foreground lg:text-3xl">
                 I&apos;m Artur Rios — a passionate software developer from Brazil,
                 currently working at{' '}
-                <a href="https://www.ciandt.com/" className="underline">
-                  CI&T
+                <a href="https://www.xpinc.com/" className="underline">
+                  XP Inc
                 </a>{' '}
-                on a project for{' '}
-                <a href="https://www.itau.com" className="underline">
-                  Itaú Bank
-                </a>
                 . I thrive on using technology to tackle real-world challenges and turn
                 complex problems into elegant solutions.
                 <br />
@@ -48,13 +44,9 @@ export default function HeroHeader() {
               >
                 Olá! Sou Artur Rios, desenvolvedor de software apaixonado pelo que faço,
                 atualmente trabalhando na{' '}
-                <a href="https://www.ciandt.com/" className="underline">
-                  CI&T
+                <a href="https://www.xpinc.com/" className="underline">
+                  XP Inc
                 </a>{' '}
-                em um projeto para o banco{' '}
-                <a href="https://www.itau.com" className="underline">
-                  Itaú
-                </a>
                 . Tenho prazer em usar a tecnologia para enfrentar desafios reais e
                 transformar problemas complexos em soluções inteligentes.
                 <br />
