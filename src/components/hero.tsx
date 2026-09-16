@@ -17,7 +17,7 @@ export default function HeroHeader() {
                 currently working at{' '}
                 <a href="https://www.xpinc.com/" className="underline">
                   XP Inc
-                </a>{' '}
+                </a>
                 . I thrive on using technology to tackle real-world challenges and turn
                 complex problems into elegant solutions.
                 <br />
@@ -46,7 +46,7 @@ export default function HeroHeader() {
                 atualmente trabalhando na{' '}
                 <a href="https://www.xpinc.com/" className="underline">
                   XP Inc
-                </a>{' '}
+                </a>
                 . Tenho prazer em usar a tecnologia para enfrentar desafios reais e
                 transformar problemas complexos em soluções inteligentes.
                 <br />
