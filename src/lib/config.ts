@@ -7,6 +7,11 @@ export const navLinks: MenuLink[] = [
     ptHref: 'https://blog.artur-rios.tech/pt',
   },
   {
+    title: 'Manifesto',
+    href: 'https://blog.artur-rios.tech/manifesto/',
+    ptHref: 'https://blog.artur-rios.tech/pt/manifesto/',
+  },
+  {
     title: 'Resume',
     ptTitle: 'Currículo',
     href: 'https://drive.google.com/file/d/1_BXPAiYVmTiGu5KFb8rGhZ-SGCQ2s0LJ/view',
