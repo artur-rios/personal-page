@@ -37,7 +37,15 @@ export default function Footer() {
           >
             Artur Rios
           </a>
-          . All Rights Reserved.
+          .{' '}
+          <a
+            target="_blank"
+            href="https://github.com/artur-rios/personal-page/blob/main/LICENSE"
+            className="hover:underline"
+          >
+            Artur Rios Attribution License
+          </a>
+          .
         </span>
       </div>
     </footer>
