@@ -12,7 +12,7 @@ export default function HeroHeader() {
           {lang === 'en' && (
             <>
               <h1 className="text-4xl font-bold lg:text-6xl">Hello World</h1>
-              <h2 className="text-lg font-light text-muted-foreground lg:text-3xl">
+              <p className="text-lg font-light text-muted-foreground lg:text-3xl">
                 I&apos;m Artur Rios — a passionate software developer from Brazil,
                 currently working at{' '}
                 <a href="https://www.xpinc.com/" className="underline">
@@ -30,7 +30,7 @@ export default function HeroHeader() {
                 <br />
                 <br />
                 Let&apos;s build something meaningful.
-              </h2>
+              </p>
             </>
           )}
           {lang === 'pt' && (
@@ -38,7 +38,7 @@ export default function HeroHeader() {
               <h1 className="text-4xl font-bold lg:text-6xl" lang="pt">
                 Olá Mundo
               </h1>
-              <h2
+              <p
                 className="text-lg font-light text-muted-foreground lg:text-3xl"
                 lang="pt"
               >
@@ -59,7 +59,7 @@ export default function HeroHeader() {
                 <br />
                 <br />
                 Vamos construir algo significativo juntos?
-              </h2>
+              </p>
             </>
           )}
         </div>

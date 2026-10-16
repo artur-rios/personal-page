@@ -1,6 +1,14 @@
+import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { projectGroups, getGroupProjects } from '@/lib/projects';
+import { getGroupProjects, getProjectGroup, projectGroups } from '@/lib/projects';
 import ProjectGroupPage from '@/components/project-group-page';
+
+interface ProjectGroupRouteProps {
+  params: Promise<{ slug: string }>;
+}
+
+// Only the groups known at build time exist; anything else is a 404.
+export const dynamicParams = false;
 
 export function generateStaticParams() {
   return projectGroups.map((group) => ({
@@ -8,13 +16,25 @@ export function generateStaticParams() {
   }));
 }
 
-export default async function ProjectGroupRoute({
+export async function generateMetadata({
   params,
-}: {
-  params: Promise<{ slug: string }>;
-}) {
+}: ProjectGroupRouteProps): Promise<Metadata> {
   const { slug } = await params;
-  const group = projectGroups.find((g) => g.slug === slug);
+  const group = getProjectGroup(slug);
+
+  if (!group) {
+    return {};
+  }
+
+  return {
+    title: group.title,
+    description: group.overview,
+  };
+}
+
+export default async function ProjectGroupRoute({ params }: ProjectGroupRouteProps) {
+  const { slug } = await params;
+  const group = getProjectGroup(slug);
 
   if (!group) {
     notFound();

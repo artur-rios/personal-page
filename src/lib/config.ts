@@ -1,3 +1,4 @@
+import type { Language } from '@/components/lang-provider';
 import { MenuLink } from '@/types/menu-link';
 
 export const navLinks: MenuLink[] = [
@@ -36,3 +37,23 @@ export const navLinks: MenuLink[] = [
     href: '/contact',
   },
 ];
+
+export interface ResolvedNavLink {
+  title: string;
+  href: string;
+  /** Props that open external links in a new tab */
+  linkProps: { target?: string; rel?: string };
+}
+
+/** Picks the title and href for the active language and flags external links. */
+export function resolveNavLink(link: MenuLink, lang: Language): ResolvedNavLink {
+  const isPt = lang === 'pt';
+  const href = (isPt && link.ptHref) || link.href;
+  const external = /^https?:\/\//.test(href);
+
+  return {
+    title: (isPt && link.ptTitle) || link.title,
+    href,
+    linkProps: external ? { target: '_blank', rel: 'noopener noreferrer' } : {},
+  };
+}

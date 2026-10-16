@@ -16,17 +16,17 @@ export function LangToggle() {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="outline" size="icon">
-          <span className="text-xs font-bold">
-            {lang === 'en' ? 'EN' : 'PT'}
+          <span className="text-xs font-bold">{lang === 'en' ? 'EN' : 'PT'}</span>
+          <span className="sr-only">
+            {lang === 'pt' ? 'Alterar idioma' : 'Change language'}
           </span>
-          <span className="sr-only">Toggle language</span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        <DropdownMenuItem onClick={() => setLang?.('en')}>
+        <DropdownMenuItem onClick={() => setLang('en')}>
           {lang === 'pt' ? 'Inglês' : 'English'}
         </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setLang?.('pt')}>
+        <DropdownMenuItem onClick={() => setLang('pt')}>
           {lang === 'pt' ? 'Português' : 'Portuguese'}
         </DropdownMenuItem>
       </DropdownMenuContent>

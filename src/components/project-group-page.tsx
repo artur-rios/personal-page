@@ -13,15 +13,11 @@ interface ProjectGroupPageProps {
   projects: Project[];
 }
 
-export default function ProjectGroupPage({
-  group,
-  projects,
-}: ProjectGroupPageProps) {
+export default function ProjectGroupPage({ group, projects }: ProjectGroupPageProps) {
   const { lang } = useLanguage();
 
   const title = lang === 'pt' && group.ptTitle ? group.ptTitle : group.title;
-  const overview =
-    lang === 'pt' && group.ptOverview ? group.ptOverview : group.overview;
+  const overview = lang === 'pt' && group.ptOverview ? group.ptOverview : group.overview;
 
   return (
     <main className="container py-12 sm:py-16 lg:py-24">
