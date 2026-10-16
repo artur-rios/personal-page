@@ -2,7 +2,7 @@
 
 import HeadingText from '@/components/heading-text';
 import { Card, CardTitle } from '@/components/ui/card';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { ContentSection } from '@/types/content-section';
 import CustomIcon from '@/components/custom-icon';
 import { useLanguage } from '@/components/lang-provider';
@@ -76,6 +76,7 @@ export const cloudCards: ContentSection = {
 const VISIBLE_LIMIT = 3;
 
 function DetailTags({ subtext }: { subtext: string }) {
+  const { lang } = useLanguage();
   const tags = subtext.split(/\s*\|\s*/).filter(Boolean);
   const [expanded, setExpanded] = useState(false);
 
@@ -84,8 +85,8 @@ function DetailTags({ subtext }: { subtext: string }) {
 
   return (
     <ul className="flex min-h-[2.75rem] flex-wrap items-center justify-center gap-1.5">
-      {visibleTags.map((tag, i) => (
-        <li key={i}>
+      {visibleTags.map((tag) => (
+        <li key={tag}>
           <span className="inline-block rounded-full border border-border/60 bg-muted/60 px-2.5 py-0.5 text-xs font-medium text-muted-foreground transition-colors hover:border-border hover:bg-muted dark:bg-muted/40 dark:border-border/50">
             {tag.trim()}
           </span>
@@ -95,10 +96,15 @@ function DetailTags({ subtext }: { subtext: string }) {
         <li>
           <button
             type="button"
+            aria-expanded={expanded}
             onClick={() => setExpanded((prev) => !prev)}
             className="inline-block cursor-pointer rounded-full border border-border/60 bg-muted/60 px-2.5 py-0.5 text-xs font-medium text-primary transition-colors hover:bg-muted dark:bg-muted/40 dark:border-border/50"
           >
-            {expanded ? 'show less' : `+${tags.length - VISIBLE_LIMIT} more`}
+            {expanded
+              ? lang === 'pt'
+                ? 'mostrar menos'
+                : 'show less'
+              : `+${tags.length - VISIBLE_LIMIT} ${lang === 'pt' ? 'mais' : 'more'}`}
           </button>
         </li>
       )}
@@ -159,6 +165,7 @@ export default function TechCards() {
     <section>
       <div className="container space-y-12 py-12 text-center sm:space-y-16 lg:py-24 lg:space-y-20">
         <HeadingText
+          as="h2"
           subtext={lang === 'pt' ? techCards.ptSubheader : techCards.subheader}
         >
           {lang === 'pt' ? techCards.ptHeader : techCards.header}
@@ -175,6 +182,7 @@ export default function TechCards() {
           ))}
         </div>
         <HeadingText
+          as="h2"
           subtext={lang === 'pt' ? cloudCards.ptSubheader : cloudCards.subheader}
         >
           {lang === 'pt' ? cloudCards.ptHeader : cloudCards.header}

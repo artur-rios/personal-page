@@ -1,36 +1,65 @@
 # Personal Page
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Source for Artur Rios' personal website: a short bio, the technologies and cloud
+providers he works with, a catalogue of open source projects and a contact form.
+The site is available in English and Brazilian Portuguese.
 
-## Getting Started
+## Stack
 
-First, run the development server:
+- [Next.js](https://nextjs.org) 16 (App Router, fully static output)
+- [React](https://react.dev) 19 and [TypeScript](https://www.typescriptlang.org)
+- [Tailwind CSS](https://tailwindcss.com) 4 with [shadcn/ui](https://ui.shadcn.com) components
+- [next-themes](https://github.com/pacocoursey/next-themes) for light/dark mode
+- [React Hook Form](https://react-hook-form.com) and [Zod](https://zod.dev) for the contact form
+
+## Getting started
+
+Requires Node.js 20.9 or later.
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to see the site.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Scripts
 
-## Learn More
+| Script                 | Description                              |
+| ---------------------- | ---------------------------------------- |
+| `npm run dev`          | Start the development server             |
+| `npm run build`        | Create a production build                |
+| `npm run start`        | Serve the production build               |
+| `npm run lint`         | Lint the project with ESLint             |
+| `npm run typecheck`    | Type-check the project with TypeScript   |
+| `npm run format`       | Format the project with Prettier         |
+| `npm run format:check` | Check formatting without writing changes |
 
-To learn more about Next.js, take a look at the following resources:
+## Project structure
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```text
+src/
+  app/          Routes: home, /projects, /projects/[slug] and /contact
+  components/   Page sections and shadcn/ui primitives (components/ui)
+  lib/          Navigation links, project data and helpers
+  types/        Shared content types
+public/         Icons and images
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Editing content
 
-## Deploy on Vercel
+- **Navigation links**: `src/lib/config.ts`
+- **Projects and project groups**: `src/lib/projects.ts`. Every group gets its own
+  page at `/projects/<slug>`.
+- **Technologies and cloud providers**: `src/components/tech-cards.tsx`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Languages
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The active language is selected with the toggle in the navbar and kept in the
+`?lang=pt` query parameter, so links to the Portuguese version can be shared.
+English is the default and is used for the prerendered HTML. Use the
+`Localized` component or the `useLanguage` hook to add translated text.
+
+## License
+
+Released under the [Artur Rios Attribution License](LICENSE).

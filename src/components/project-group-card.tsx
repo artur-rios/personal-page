@@ -12,8 +12,7 @@ export default function ProjectGroupCard({ group }: { group: ProjectGroup }) {
   const { lang } = useLanguage();
 
   const title = lang === 'pt' && group.ptTitle ? group.ptTitle : group.title;
-  const overview =
-    lang === 'pt' && group.ptOverview ? group.ptOverview : group.overview;
+  const overview = lang === 'pt' && group.ptOverview ? group.ptOverview : group.overview;
 
   const tagProjects = getGroupProjects(group);
   const tags = [...new Set(tagProjects.flatMap((p) => p.tech))];
@@ -23,9 +22,7 @@ export default function ProjectGroupCard({ group }: { group: ProjectGroup }) {
   return (
     <Card className="flex h-full flex-col overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-md">
       <CardContent className="flex flex-1 flex-col p-5 sm:p-6">
-        <h3 className="text-lg font-semibold text-primary sm:text-xl">
-          {title}
-        </h3>
+        <h3 className="text-lg font-semibold text-primary sm:text-xl">{title}</h3>
         <p className="mt-2 line-clamp-3 text-sm leading-relaxed text-muted-foreground">
           {overview}
         </p>
