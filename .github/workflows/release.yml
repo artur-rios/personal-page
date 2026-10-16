@@ -1,0 +1,60 @@
+name: Release
+
+# Tags a release once it is live. Vercel deploys main to production after a release/x.y.z pull
+# request is merged and reports the deployment to GitHub; when that production deployment succeeds,
+# this tags the deployed commit v<version> (the version in package.json, which the Branch Policy
+# workflow checked against the release branch's name) and creates the GitHub release of that name.
+#
+# A deployment of a commit whose version is already tagged (a redeploy, or an owner's bypass push to
+# main) releases nothing. Run it by hand on main to tag the current commit if a deployment event was
+# missed.
+
+on:
+  deployment_status:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+jobs:
+  release:
+    name: Tag release
+    if: >-
+      (github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main') ||
+      (github.event.deployment_status.state == 'success' &&
+       github.event.deployment.environment == 'Production')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+        with:
+          ref: ${{ github.event.deployment.sha || github.sha }}
+          fetch-depth: 0
+
+      - name: Tag and publish the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SHA: ${{ github.event.deployment.sha || github.sha }}
+        run: |
+          set -euo pipefail
+
+          git fetch --no-tags --quiet origin main
+          if ! git merge-base --is-ancestor "$SHA" origin/main; then
+            echo "$SHA is not on main; nothing to release."
+            exit 0
+          fi
+
+          tag="v$(node -p "require('./package.json').version")"
+          if git ls-remote --exit-code --tags origin "refs/tags/$tag" >/dev/null; then
+            echo "$tag was already released; nothing to do."
+            exit 0
+          fi
+
+          # Notes are generated from the pull requests merged since the previous tag; CHANGELOG.md
+          # is the curated record.
+          gh release create "$tag" --target "$SHA" --title "$tag" --generate-notes
+          echo "Released $tag at $SHA."
