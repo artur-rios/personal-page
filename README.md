@@ -60,6 +60,13 @@ The active language is selected with the toggle in the navbar and kept in the
 English is the default and is used for the prerendered HTML. Use the
 `Localized` component or the `useLanguage` hook to add translated text.
 
+## Contributing
+
+Work happens on `feature/` and `fix/` branches cut from `develop`, and releases
+go to production through `release/x.y.z` pull requests into `main`. See
+[CONTRIBUTING.md](CONTRIBUTING.md) for the branching model and how to release,
+and [CHANGELOG.md](CHANGELOG.md) for what changed in each version.
+
 ## License
 
 Released under the [Artur Rios Attribution License](LICENSE).

@@ -7,4 +7,21 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Changed
+
+- Pages are prerendered with their content, so it shows before scripts load and the light or
+  dark theme no longer flashes on first paint.
+- The language choice no longer adds browser history entries, so the back button leaves the page
+  on the first press. English pages no longer carry `?lang=en`.
+- Each page has its own title in the browser tab, and project pages their own description.
+- The theme menu, the "show more" tags and the menu buttons are translated into Portuguese.
+- Updated all dependencies to their latest releases.
+
+### Fixed
+
+- Footer links to the blog, the manifesto and the resume open the Portuguese version when the
+  site is in Portuguese, and external footer links open in a new tab.
+- Contact form messages containing `&`, `#` or line breaks reach the e-mail client intact.
+- A typo in the Portuguese description of Alexandria UI.
+
 [Unreleased]: https://github.com/artur-rios/personal-page/commits/develop
