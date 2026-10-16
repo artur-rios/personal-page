@@ -9,8 +9,9 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
-- The footer shows the version of the site that is running, linked to its GitHub release. Preview
-  deployments also show the commit they were built from.
+- The footer shows the version of the site that is running, linked to its GitHub release, in place
+  of the copyright year, name and license line. Preview deployments also show the commit they were
+  built from.
 
 ### Changed
 

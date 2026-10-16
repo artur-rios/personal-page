@@ -7,6 +7,7 @@ import { buildVersion } from '@/lib/version';
 
 export default function Footer() {
   const { lang } = useLanguage();
+  const versionTitle = lang === 'pt' ? 'Versão em execução' : 'Running version';
 
   return (
     <footer className="mt-auto">
@@ -33,42 +34,21 @@ export default function Footer() {
           </ul>
         </div>
         <hr className="my-6 text-muted-foreground sm:mx-auto lg:my-8" />
-        <span className="block text-sm text-muted-foreground sm:text-center">
-          © {new Date().getFullYear()}{' '}
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://github.com/artur-rios/"
-            className="hover:underline"
-          >
-            Artur Rios
-          </a>
-          .{' '}
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://github.com/artur-rios/personal-page/blob/main/LICENSE"
-            className="hover:underline"
-          >
-            Artur Rios Attribution License
-          </a>
-          .{' '}
+        <p className="text-sm text-muted-foreground sm:text-center">
           {buildVersion.href ? (
             <a
               target="_blank"
               rel="noopener noreferrer"
               href={buildVersion.href}
               className="hover:underline"
-              title={lang === 'pt' ? 'Versão em execução' : 'Running version'}
+              title={versionTitle}
             >
               {buildVersion.label}
             </a>
           ) : (
-            <span title={lang === 'pt' ? 'Versão em execução' : 'Running version'}>
-              {buildVersion.label}
-            </span>
+            <span title={versionTitle}>{buildVersion.label}</span>
           )}
-        </span>
+        </p>
       </div>
     </footer>
   );
