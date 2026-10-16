@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { navLinks, resolveNavLink } from '@/lib/config';
 import { useLanguage } from '@/components/lang-provider';
+import { buildVersion } from '@/lib/version';
 
 export default function Footer() {
   const { lang } = useLanguage();
@@ -51,7 +52,22 @@ export default function Footer() {
           >
             Artur Rios Attribution License
           </a>
-          .
+          .{' '}
+          {buildVersion.href ? (
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href={buildVersion.href}
+              className="hover:underline"
+              title={lang === 'pt' ? 'Versão em execução' : 'Running version'}
+            >
+              {buildVersion.label}
+            </a>
+          ) : (
+            <span title={lang === 'pt' ? 'Versão em execução' : 'Running version'}>
+              {buildVersion.label}
+            </span>
+          )}
         </span>
       </div>
     </footer>
