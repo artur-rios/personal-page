@@ -64,22 +64,14 @@ export default function ProjectCard({ project }: { project: Project }) {
       <CardFooter className="flex gap-3 p-5 pt-0 sm:p-6 sm:pt-0">
         {project.websiteUrl && (
           <Button variant="outline" size="sm" asChild className="gap-1.5">
-            <a
-              href={project.websiteUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <a href={project.websiteUrl} target="_blank" rel="noopener noreferrer">
               <ExternalLink className="h-4 w-4" />
               {websiteLabel}
             </a>
           </Button>
         )}
         <Button variant="outline" size="sm" asChild className="gap-1.5">
-          <a
-            href={project.githubUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
             <FaGithub className="h-4 w-4" />
             GitHub
           </a>

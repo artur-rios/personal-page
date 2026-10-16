@@ -175,7 +175,7 @@ export const projects: Project[] = [
     description:
       "The cross-platform desktop front-end for Alexandria API, a personal library system that indexes, organizes, and surfaces a single person's on-disk media and documents.",
     ptDescription:
-      'FA interface desktop multiplataforma para a Alexandria API, um sistema de biblioteca pessoal que indexa, organiza e disponibiliza os arquivos de mídia e documentos armazenados em disco de uma única pessoa.',
+      'A interface desktop multiplataforma para a Alexandria API, um sistema de biblioteca pessoal que indexa, organiza e disponibiliza os arquivos de mídia e documentos armazenados em disco de uma única pessoa.',
     githubUrl: 'https://github.com/artur-rios/alexandria-ui',
     repoOwner: 'artur-rios',
     repoName: 'alexandria-ui',
@@ -292,8 +292,7 @@ export const projectGroups: ProjectGroup[] = [
   {
     slug: 'ai-coding-skills',
     title: 'AI Coding Skills',
-    overview:
-      'A collection of reusable agent skills for AI coding assistants.',
+    overview: 'A collection of reusable agent skills for AI coding assistants.',
     ptOverview:
       'Uma coleção de skills reutilizáveis para assistentes de programação com IA.',
     projectRepoNames: ['ai-coding-skills'],
@@ -301,8 +300,7 @@ export const projectGroups: ProjectGroup[] = [
   {
     slug: 'heimdall-api',
     title: 'Heimdall API',
-    overview:
-      'A centralized identity management API built with ASP.NET Core (.NET 10).',
+    overview: 'A centralized identity management API built with ASP.NET Core (.NET 10).',
     ptOverview:
       'Uma API centralizada de gerenciamento de identidade construída com ASP.NET Core (.NET 10).',
     projectRepoNames: ['heimdall-api'],
@@ -311,8 +309,7 @@ export const projectGroups: ProjectGroup[] = [
     slug: 'ml-accounting-reconciliation',
     title: 'ML Accounting Reconciliation',
     ptTitle: 'Conciliação Contábil com ML',
-    overview:
-      'Automates financial reconciliation using supervised machine learning.',
+    overview: 'Automates financial reconciliation using supervised machine learning.',
     ptOverview:
       'Automatiza a conciliação financeira usando aprendizado de máquina supervisionado.',
     projectRepoNames: ['ml-accounting-reconciliation'],
@@ -321,8 +318,7 @@ export const projectGroups: ProjectGroup[] = [
     slug: 'dotnet-libraries',
     title: '.NET Libraries',
     ptTitle: 'Bibliotecas .NET',
-    overview:
-      'A family of open source libraries to speed up .NET development.',
+    overview: 'A family of open source libraries to speed up .NET development.',
     ptOverview:
       'Uma família de bibliotecas open source para acelerar o desenvolvimento em .NET.',
     projectRepoNames: dotnetLibraries.map((l) => l.repoName),
@@ -335,4 +331,8 @@ export function getGroupProjects(group: ProjectGroup): Project[] {
   return group.projectRepoNames
     .map((name) => allProjects.find((p) => p.repoName === name))
     .filter((p): p is Project => p !== undefined);
+}
+
+export function getProjectGroup(slug: string): ProjectGroup | undefined {
+  return projectGroups.find((group) => group.slug === slug);
 }

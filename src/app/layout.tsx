@@ -1,14 +1,27 @@
 import type { Metadata, Viewport } from 'next';
 import './globals.css';
-import React, { Suspense } from 'react';
+import React from 'react';
 import { ThemeProvider } from '@/components/theme-provider';
 import Navbar from '@/components/navbar';
 import Footer from '@/components/footer';
 import { LangProvider } from '@/components/lang-provider';
 
+const description =
+  'Artur Rios — Brazilian software developer building .NET libraries, APIs and developer tools.';
+
 export const metadata: Metadata = {
-  title: 'Artur Rios',
-  description: 'Brazilian software developer',
+  title: {
+    default: 'Artur Rios',
+    template: '%s | Artur Rios',
+  },
+  description,
+  authors: [{ name: 'Artur Rios', url: 'https://github.com/artur-rios' }],
+  openGraph: {
+    type: 'website',
+    siteName: 'Artur Rios',
+    title: 'Artur Rios',
+    description,
+  },
 };
 
 export const viewport: Viewport = {
@@ -27,16 +40,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`flex min-h-screen flex-col bg-background text-primary`}>
-        <Suspense>
-          <LangProvider>
-            <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-              <Navbar />
-              {children}
-              <Footer />
-            </ThemeProvider>
-          </LangProvider>
-        </Suspense>
+      <body className="flex min-h-screen flex-col bg-background text-primary">
+        <LangProvider>
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+            <Navbar />
+            {children}
+            <Footer />
+          </ThemeProvider>
+        </LangProvider>
       </body>
     </html>
   );

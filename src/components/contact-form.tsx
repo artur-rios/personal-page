@@ -24,7 +24,9 @@ export default function ContactForm() {
   const { lang } = useLanguage();
 
   const formSchema = z.object({
-    subject: z.string().min(1, lang === 'pt' ? 'Digite o assunto' : 'Subject is required'),
+    subject: z
+      .string()
+      .min(1, lang === 'pt' ? 'Digite o assunto' : 'Subject is required'),
     msg: z.string().min(1, lang === 'pt' ? 'Digite a mensagem' : 'Message is required'),
   });
 
@@ -37,7 +39,9 @@ export default function ContactForm() {
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    window.location.href = `mailto:${email}?subject=${values.subject}&body=${values.msg}`;
+    // Encode both fields so characters like &, # and line breaks survive the mailto: URL.
+    const params = `subject=${encodeURIComponent(values.subject)}&body=${encodeURIComponent(values.msg)}`;
+    window.location.href = `mailto:${email}?${params}`;
     form.reset();
   }
 
@@ -84,8 +88,7 @@ export default function ContactForm() {
             </FormItem>
           )}
         />
-        <div />
-        <Button className="w-full" type="submit">
+        <Button className="mt-4 w-full" type="submit">
           {lang === 'pt' ? 'Enviar' : 'Submit'}
         </Button>
       </form>

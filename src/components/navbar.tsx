@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { ThemeToggle } from '@/components/theme-toggle';
-import { navLinks } from '@/lib/config';
+import { navLinks, resolveNavLink } from '@/lib/config';
 import { LangToggle } from '@/components/lang-toggle';
 import { useLanguage } from '@/components/lang-provider';
 
@@ -12,16 +12,25 @@ export default function Navbar() {
 
   const { lang } = useLanguage();
 
-  const handleClick = async () => {
+  const handleClick = () => {
     setNavbar(false);
   };
 
+  // Lock page scroll while the mobile menu is open and let Escape close it.
   useEffect(() => {
-    if (navbar) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'auto';
-    }
+    if (!navbar) return;
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setNavbar(false);
+    };
+
+    document.body.style.overflow = 'hidden';
+    document.addEventListener('keydown', onKeyDown);
+
+    return () => {
+      document.body.style.overflow = '';
+      document.removeEventListener('keydown', onKeyDown);
+    };
   }, [navbar]);
 
   return (
@@ -30,20 +39,22 @@ export default function Navbar() {
         <div>
           <div className="flex items-center justify-between py-3 md:block md:py-5">
             <Link href="/" onClick={handleClick}>
-              <h1 className="text-2xl font-bold duration-200 lg:hover:scale-[1.10]">
+              <span className="block text-2xl font-bold duration-200 lg:hover:scale-[1.10]">
                 Artur Rios
-              </h1>
+              </span>
             </Link>
             <div className="flex gap-1 md:hidden">
               <button
                 className="rounded-md p-2 text-primary outline-none focus:border focus:border-primary"
-                aria-label="Hamburger Menu"
-                onClick={() => setNavbar(!navbar)}
+                aria-label={lang === 'pt' ? 'Abrir menu' : 'Toggle menu'}
+                aria-expanded={navbar}
+                aria-controls="mobile-menu"
+                onClick={() => setNavbar((open) => !open)}
               >
                 {navbar ? (
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="h-6 w-6 "
+                    className="h-6 w-6"
                     viewBox="0 0 20 20"
                     fill="currentColor"
                   >
@@ -56,7 +67,7 @@ export default function Navbar() {
                 ) : (
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="h-6 w-6 "
+                    className="h-6 w-6"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -77,26 +88,28 @@ export default function Navbar() {
         </div>
         <div>
           <div
+            id="mobile-menu"
             className={`absolute left-0 right-0 z-10 m-auto justify-self-center rounded-md border bg-background p-4 md:static md:mt-0 md:block md:border-none md:p-0 ${
               navbar ? 'block' : 'hidden'
             }`}
             style={{ width: '100%', maxWidth: '20rem' }}
           >
             <ul className="flex flex-col items-center space-y-4 text-primary opacity-60 md:flex-row md:space-x-6 md:space-y-0">
-              {navLinks.map((link) => (
-                <li key={link.title}>
-                  <Link
-                    className="hover:underline"
-                    href={lang === 'pt' ? link.ptHref || link.href || '' : link.href || ''}
-                    onClick={handleClick}
-                    {...(link.href?.startsWith('http')
-                      ? { target: '_blank', rel: 'noopener noreferrer' }
-                      : {})}
-                  >
-                    {lang === 'pt' && link.ptTitle ? link.ptTitle : link.title}
-                  </Link>
-                </li>
-              ))}
+              {navLinks.map((link) => {
+                const { title, href, linkProps } = resolveNavLink(link, lang);
+                return (
+                  <li key={link.title}>
+                    <Link
+                      className="hover:underline"
+                      href={href}
+                      onClick={handleClick}
+                      {...linkProps}
+                    >
+                      {title}
+                    </Link>
+                  </li>
+                );
+              })}
             </ul>
           </div>
         </div>
