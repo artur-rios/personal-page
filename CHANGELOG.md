@@ -7,6 +7,8 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.0.0] - 2026-10-16
+
 ### Added
 
 - The footer shows the version of the site that is running, linked to its GitHub release, in place
@@ -30,4 +32,5 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Contact form messages containing `&`, `#` or line breaks reach the e-mail client intact.
 - A typo in the Portuguese description of Alexandria UI.
 
-[Unreleased]: https://github.com/artur-rios/personal-page/commits/develop
+[Unreleased]: https://github.com/artur-rios/personal-page/compare/v1.0.0...develop
+[1.0.0]: https://github.com/artur-rios/personal-page/releases/tag/v1.0.0
