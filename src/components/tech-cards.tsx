@@ -43,6 +43,12 @@ export const techCards: ContentSection = {
       icon: 'rust',
       docUrl: 'https://doc.rust-lang.org/',
     },
+    {
+      text: `Flutter / Dart`,
+      subtext: `Riverpod | go_router | Dio | Drift | FFI`,
+      icon: 'flutter-dart',
+      docUrl: 'https://docs.flutter.dev/',
+    },
   ],
 };
 
@@ -170,7 +176,7 @@ export default function TechCards() {
         >
           {lang === 'pt' ? techCards.ptHeader : techCards.header}
         </HeadingText>
-        <div className="grid grid-cols-2 items-stretch gap-4 sm:grid-cols-3 sm:gap-5 md:gap-6 lg:grid-cols-5 lg:gap-6">
+        <div className="mx-auto grid max-w-4xl grid-cols-2 items-stretch gap-4 sm:grid-cols-3 sm:gap-5 md:gap-6 lg:gap-6">
           {techCards.content.map((card) => (
             <TechCard
               key={card.text}

@@ -13,11 +13,12 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   and Fortuna.
 - A Fortuna project, with its API and UI repositories, and the Heimdall UI repository under
   Heimdall.
-- A Rust card among the technologies on the home page.
+- Rust and Flutter / Dart cards among the technologies on the home page.
 
 ### Changed
 
-- The JavaScript and TypeScript cards on the home page are one card.
+- The JavaScript and TypeScript cards on the home page are one card, and the technology cards
+  sit in two rows of three.
 - The Heimdall project page moved from `/projects/heimdall-api` to `/projects/heimdall`; the old
   address redirects to it.
 
