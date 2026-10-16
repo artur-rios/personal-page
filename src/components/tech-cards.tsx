@@ -2,7 +2,9 @@
 
 import HeadingText from '@/components/heading-text';
 import { Card, CardTitle } from '@/components/ui/card';
+import Link from 'next/link';
 import { useState } from 'react';
+import { ArrowRight } from 'lucide-react';
 import { ContentSection } from '@/types/content-section';
 import CustomIcon from '@/components/custom-icon';
 import { useLanguage } from '@/components/lang-provider';
@@ -10,14 +12,15 @@ import { useLanguage } from '@/components/lang-provider';
 export const techCards: ContentSection = {
   header: `Technologies I work with`,
   ptHeader: `Tecnologias que utilizo`,
-  subheader: `Programming languages and frameworks I have professional experience`,
-  ptSubheader: `Linguagens de programação e frameworks nos quais possuo experiência profissional`,
+  subheader: `Languages and frameworks I use at work and in my own projects`,
+  ptSubheader: `Linguagens e frameworks que uso no trabalho e nos meus próprios projetos`,
   content: [
     {
       text: `C#`,
       subtext: `.Net | Entity Framework`,
       icon: 'csharp',
       docUrl: 'https://learn.microsoft.com/en-us/dotnet/csharp/',
+      projectsFilter: 'csharp',
     },
     {
       text: `Java`,
@@ -36,18 +39,21 @@ export const techCards: ContentSection = {
       subtext: `Pandas | NumPy | PySpark`,
       icon: 'python',
       docUrl: 'https://docs.python.org/3/',
+      projectsFilter: 'python',
     },
     {
       text: `Rust`,
       subtext: `Tokio | Axum | SQLx | Serde | FFI`,
       icon: 'rust',
       docUrl: 'https://doc.rust-lang.org/',
+      projectsFilter: 'rust',
     },
     {
       text: `Flutter / Dart`,
       subtext: `Riverpod | go_router | Dio | Drift | FFI`,
       icon: 'flutter-dart',
       docUrl: 'https://docs.flutter.dev/',
+      projectsFilter: 'flutter-dart',
     },
   ],
 };
@@ -79,7 +85,7 @@ export const cloudCards: ContentSection = {
   ],
 };
 
-const VISIBLE_LIMIT = 3;
+const VISIBLE_LIMIT = 5;
 
 function DetailTags({ subtext }: { subtext: string }) {
   const { lang } = useLanguage();
@@ -123,12 +129,16 @@ function TechCard({
   subtext,
   icon,
   docUrl,
+  projectsFilter,
 }: {
   title: string;
   subtext: string;
   icon?: string;
   docUrl?: string;
+  projectsFilter?: string;
 }) {
+  const { lang } = useLanguage();
+
   const titleNode = (
     <CardTitle className="mt-3 shrink-0 text-center text-base font-semibold sm:mt-4 sm:text-lg">
       {docUrl ? (
@@ -160,6 +170,15 @@ function TechCard({
       <div className="mt-3 w-full shrink-0 sm:mt-4">
         <DetailTags subtext={subtext} />
       </div>
+      {projectsFilter && (
+        <Link
+          href={`/projects?tech=${projectsFilter}`}
+          className="mt-auto inline-flex items-center gap-1 pt-4 text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+        >
+          {lang === 'pt' ? 'Ver projetos' : 'See projects'}
+          <ArrowRight className="h-4 w-4" />
+        </Link>
+      )}
     </Card>
   );
 }
@@ -184,6 +203,7 @@ export default function TechCards() {
               subtext={card.subtext}
               icon={card.icon}
               docUrl={card.docUrl}
+              projectsFilter={card.projectsFilter}
             />
           ))}
         </div>
@@ -201,6 +221,7 @@ export default function TechCards() {
               subtext={card.subtext}
               icon={card.icon}
               docUrl={card.docUrl}
+              projectsFilter={card.projectsFilter}
             />
           ))}
         </div>

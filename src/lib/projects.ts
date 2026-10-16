@@ -1,5 +1,6 @@
 import { Project } from '@/types/project';
 import { ProjectGroup } from '@/types/project-group';
+import { TechFilter } from '@/types/tech-filter';
 
 export const dotnetLibraries: Project[] = [
   {
@@ -381,4 +382,26 @@ export function getGroupProjects(group: ProjectGroup): Project[] {
 
 export function getProjectGroup(slug: string): ProjectGroup | undefined {
   return projectGroups.find((group) => group.slug === slug);
+}
+
+/** Every technology the group's projects list, without repeats, in the order they first appear. */
+export function getGroupTech(group: ProjectGroup): string[] {
+  return [...new Set(getGroupProjects(group).flatMap((p) => p.tech))];
+}
+
+/** Technologies the projects page can be narrowed to; the home page's tech cards link to these. */
+export const techFilters: TechFilter[] = [
+  { slug: 'csharp', label: 'C#', tech: ['C#'] },
+  { slug: 'python', label: 'Python', tech: ['Python'] },
+  { slug: 'rust', label: 'Rust', tech: ['Rust'] },
+  { slug: 'flutter-dart', label: 'Flutter / Dart', tech: ['Flutter', 'Dart'] },
+];
+
+export function getTechFilter(slug: string | null): TechFilter | undefined {
+  return techFilters.find((filter) => filter.slug === slug);
+}
+
+export function matchesTechFilter(group: ProjectGroup, filter: TechFilter): boolean {
+  const tech = getGroupTech(group);
+  return filter.tech.some((t) => tech.includes(t));
 }

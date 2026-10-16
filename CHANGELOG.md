@@ -14,6 +14,9 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - A Fortuna project, with its API and UI repositories, and the Heimdall UI repository under
   Heimdall.
 - Rust and Flutter / Dart cards among the technologies on the home page.
+- The projects page can be filtered by technology, and the C#, Python, Rust and Flutter / Dart
+  cards on the home page link to their projects.
+- Project cards with a documentation site link to it.
 
 ### Changed
 
@@ -21,6 +24,13 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   sit in two rows of three.
 - The Heimdall project page moved from `/projects/heimdall-api` to `/projects/heimdall`; the old
   address redirects to it.
+- The technologies subheader no longer claims professional experience for all of them, and the
+  cards show up to five tags before "show more".
+
+### Fixed
+
+- Repository previews on project pages no longer come up blank: they load straight from GitHub
+  instead of through the image optimizer.
 
 ## [1.0.0] - 2026-10-16
 
