@@ -179,7 +179,7 @@ export const projects: Project[] = [
     githubUrl: 'https://github.com/artur-rios/alexandria-ui',
     repoOwner: 'artur-rios',
     repoName: 'alexandria-ui',
-    tech: [],
+    tech: ['Dart', 'Flutter', 'FFI'],
   },
   {
     title: 'CLI Utils',
@@ -204,6 +204,28 @@ export const projects: Project[] = [
     tech: ['PowerShell', 'Shell', 'Batch'],
   },
   {
+    title: 'Fortuna API',
+    description:
+      "The back end of Fortuna, a personal finance system that tracks a person's bank accounts, credit cards, investments, expenses and earnings in one place.",
+    ptDescription:
+      'O back-end do Fortuna, um sistema de finanças pessoais que reúne em um só lugar as contas bancárias, cartões de crédito, investimentos, despesas e receitas de uma pessoa.',
+    githubUrl: 'https://github.com/artur-rios/fortuna-api',
+    repoOwner: 'artur-rios',
+    repoName: 'fortuna-api',
+    tech: ['C#', 'ASP.NET Core', 'PostgreSQL', 'Rust'],
+  },
+  {
+    title: 'Fortuna UI',
+    description:
+      'The Flutter front end for Fortuna API, running on the web, Windows, Linux and Android from one code base.',
+    ptDescription:
+      'O front-end em Flutter para a Fortuna API, que roda na web, no Windows, no Linux e no Android a partir de um único código-fonte.',
+    githubUrl: 'https://github.com/artur-rios/fortuna-ui',
+    repoOwner: 'artur-rios',
+    repoName: 'fortuna-ui',
+    tech: ['Dart', 'Flutter'],
+  },
+  {
     title: 'Heimdall API',
     description:
       'A centralized identity management API built with ASP.NET Core (.NET 10).',
@@ -213,6 +235,17 @@ export const projects: Project[] = [
     repoOwner: 'artur-rios',
     repoName: 'heimdall-api',
     tech: ['C#', 'ASP.NET Core', '.NET 10'],
+  },
+  {
+    title: 'Heimdall UI',
+    description:
+      'The Flutter front end for Heimdall API, a centralized identity management system with scope-based multi-tenancy.',
+    ptDescription:
+      'O front-end em Flutter para a Heimdall API, um sistema centralizado de gerenciamento de identidade com multi-tenancy baseado em escopos.',
+    githubUrl: 'https://github.com/artur-rios/heimdall-ui',
+    repoOwner: 'artur-rios',
+    repoName: 'heimdall-ui',
+    tech: ['Dart', 'Flutter'],
   },
   {
     title: 'Maestro',
@@ -268,6 +301,7 @@ export const projectGroups: ProjectGroup[] = [
       'A personal library system that indexes, organizes, and surfaces on-disk media and documents.',
     ptOverview:
       'Um sistema de biblioteca pessoal que indexa, organiza e disponibiliza arquivos de mídia e documentos.',
+    docsUrl: 'https://artur-rios.github.io/alexandria-docs/',
     projectRepoNames: ['alexandria-api', 'alexandria-ui'],
   },
   {
@@ -298,12 +332,24 @@ export const projectGroups: ProjectGroup[] = [
     projectRepoNames: ['ai-coding-skills'],
   },
   {
-    slug: 'heimdall-api',
-    title: 'Heimdall API',
-    overview: 'A centralized identity management API built with ASP.NET Core (.NET 10).',
+    slug: 'heimdall',
+    title: 'Heimdall',
+    overview:
+      'A centralized identity management system with scope-based multi-tenancy: an ASP.NET Core API and the Flutter application that drives it.',
     ptOverview:
-      'Uma API centralizada de gerenciamento de identidade construída com ASP.NET Core (.NET 10).',
-    projectRepoNames: ['heimdall-api'],
+      'Um sistema centralizado de gerenciamento de identidade com multi-tenancy baseado em escopos: uma API em ASP.NET Core e a aplicação Flutter que a utiliza.',
+    docsUrl: 'https://artur-rios.github.io/heimdall-docs/',
+    projectRepoNames: ['heimdall-api', 'heimdall-ui'],
+  },
+  {
+    slug: 'fortuna',
+    title: 'Fortuna',
+    overview:
+      'A personal finance system that tracks your whole financial life in one place and turns it into tables, charts and projections.',
+    ptOverview:
+      'Um sistema de finanças pessoais que reúne toda a sua vida financeira em um só lugar e a transforma em tabelas, gráficos e projeções.',
+    docsUrl: 'https://artur-rios.github.io/fortuna-docs/',
+    projectRepoNames: ['fortuna-api', 'fortuna-ui'],
   },
   {
     slug: 'ml-accounting-reconciliation',

@@ -7,6 +7,20 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added
+
+- Project pages link to the documentation site of the project as a whole, for Alexandria, Heimdall
+  and Fortuna.
+- A Fortuna project, with its API and UI repositories, and the Heimdall UI repository under
+  Heimdall.
+- A Rust card among the technologies on the home page.
+
+### Changed
+
+- The JavaScript and TypeScript cards on the home page are one card.
+- The Heimdall project page moved from `/projects/heimdall-api` to `/projects/heimdall`; the old
+  address redirects to it.
+
 ## [1.0.0] - 2026-10-16
 
 ### Added

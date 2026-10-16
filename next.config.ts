@@ -9,6 +9,16 @@ const nextConfig: NextConfig = {
     APP_COMMIT: process.env.VERCEL_GIT_COMMIT_SHA ?? '',
     APP_ENVIRONMENT: process.env.VERCEL_ENV ?? 'development',
   },
+  // The Heimdall group covered only the API until its UI joined it under one slug.
+  async redirects() {
+    return [
+      {
+        source: '/projects/heimdall-api',
+        destination: '/projects/heimdall',
+        permanent: true,
+      },
+    ];
+  },
   images: {
     remotePatterns: [
       {

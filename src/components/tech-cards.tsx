@@ -26,22 +26,22 @@ export const techCards: ContentSection = {
       docUrl: 'https://docs.oracle.com/en/java/',
     },
     {
-      text: `JavaScript`,
-      subtext: `Node | React`,
-      icon: 'javascript',
-      docUrl: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript',
-    },
-    {
-      text: `TypeScript`,
+      text: `JavaScript / TypeScript`,
       subtext: `Node | Angular | React`,
-      icon: 'typescript',
-      docUrl: 'https://www.typescriptlang.org/docs/',
+      icon: 'javascript-typescript',
+      docUrl: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript',
     },
     {
       text: `Python`,
       subtext: `Pandas | NumPy | PySpark`,
       icon: 'python',
       docUrl: 'https://docs.python.org/3/',
+    },
+    {
+      text: `Rust`,
+      subtext: `Tokio | Axum | SQLx | Serde | FFI`,
+      icon: 'rust',
+      docUrl: 'https://doc.rust-lang.org/',
     },
   ],
 };
