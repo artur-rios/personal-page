@@ -7,6 +7,12 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added
+
+- The footer shows the version of the site that is running, linked to its GitHub release, in place
+  of the copyright year, name and license line. Preview deployments also show the commit they were
+  built from.
+
 ### Changed
 
 - Pages are prerendered with their content, so it shows before scripts load and the light or

@@ -59,6 +59,11 @@ The release version is the name of the release branch, and `version` in `package
 same: the Branch Policy workflow refuses a `release/x.y.z → main` pull request whose `package.json`
 does not say `x.y.z`, or whose version already has a tag.
 
+The footer of every page shows the running version, read from `package.json` at build time
+(`next.config.ts`), so setting it is what makes the release visible on the site. Vercel preview
+deployments add the short commit they were built from, since `develop` and a release candidate
+carry the previous release's version until the changelog is finalized.
+
 ## Releasing
 
 The site is hosted on [Vercel](https://vercel.com), which deploys every pushed branch:
