@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import HeadingText from '@/components/heading-text';
-import { projectGroups } from '@/lib/projects';
-import ProjectGroupCard from '@/components/project-group-card';
+import ProjectGroupList from '@/components/project-group-list';
 import Localized from '@/components/localized';
 
 export const metadata: Metadata = {
@@ -24,11 +23,7 @@ export default function ProjectsPage() {
           <Localized en="Projects" pt="Projetos" />
         </HeadingText>
 
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-8 lg:grid-cols-3">
-          {projectGroups.map((group) => (
-            <ProjectGroupCard key={group.slug} group={group} />
-          ))}
-        </div>
+        <ProjectGroupList />
       </div>
     </main>
   );
