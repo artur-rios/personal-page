@@ -39,6 +39,9 @@ export default function ProjectCard({ project }: { project: Project }) {
           src={previewUrl}
           alt={`${title} preview`}
           fill
+          // GitHub renders these on request; fetched through the image optimizer they often time
+          // out and leave the preview blank, so the browser loads them straight from GitHub.
+          unoptimized
           className="object-cover transition-transform duration-300 group-hover:scale-105 dark:brightness-90"
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
         />

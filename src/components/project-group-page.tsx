@@ -4,7 +4,8 @@ import Link from 'next/link';
 import HeadingText from '@/components/heading-text';
 import ProjectCard from '@/components/project-card';
 import { useLanguage } from '@/components/lang-provider';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, BookOpen } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 import { ProjectGroup } from '@/types/project-group';
 import { Project } from '@/types/project';
 
@@ -31,6 +32,14 @@ export default function ProjectGroupPage({ group, projects }: ProjectGroupPagePr
             {lang === 'pt' ? 'Voltar para projetos' : 'Back to projects'}
           </Link>
           <HeadingText subtext={overview}>{title}</HeadingText>
+          {group.docsUrl && (
+            <Button asChild className="gap-1.5">
+              <a href={group.docsUrl} target="_blank" rel="noopener noreferrer">
+                <BookOpen className="h-4 w-4" />
+                {lang === 'pt' ? 'Documentação do projeto' : 'Project documentation'}
+              </a>
+            </Button>
+          )}
         </div>
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-8 lg:grid-cols-3">
           {projects.map((project) => (
