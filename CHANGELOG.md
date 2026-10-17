@@ -7,6 +7,12 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added
+
+- A resume page at `/resume`, in English and Portuguese, matching the PDF resume, with a button
+  that downloads the PDF. The PDFs are served by the site itself, and the Resume links in the menu
+  and the footer open the page instead of the PDF on Google Drive.
+
 ## [1.0.0] - 2026-10-16
 
 ### Added
