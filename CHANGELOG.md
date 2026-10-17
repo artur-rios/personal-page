@@ -9,9 +9,31 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Project pages link to the documentation site of the project as a whole, for Alexandria, Heimdall
+  and Fortuna.
+- A Fortuna project, with its API and UI repositories, and the Heimdall UI repository under
+  Heimdall.
+- Rust and Flutter / Dart cards among the technologies on the home page.
+- The projects page can be filtered by technology, and the C#, Python, Rust and Flutter / Dart
+  cards on the home page link to their projects.
+- Project cards with a documentation site link to it.
 - A resume page at `/resume`, in English and Portuguese, matching the PDF resume, with a button
   that downloads the PDF. The PDFs are served by the site itself, and the Resume links in the menu
   and the footer open the page instead of the PDF on Google Drive.
+
+### Changed
+
+- The JavaScript and TypeScript cards on the home page are one card, and the technology cards
+  sit in two rows of three.
+- The Heimdall project page moved from `/projects/heimdall-api` to `/projects/heimdall`; the old
+  address redirects to it.
+- The technologies subheader no longer claims professional experience for all of them, and the
+  cards show up to five tags before "show more".
+
+### Fixed
+
+- Repository previews on project pages no longer come up blank: they load straight from GitHub
+  instead of through the image optimizer.
 
 ## [1.0.0] - 2026-10-16
 

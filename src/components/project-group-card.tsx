@@ -4,9 +4,9 @@ import Link from 'next/link';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/components/lang-provider';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, BookOpen } from 'lucide-react';
 import { ProjectGroup } from '@/types/project-group';
-import { getGroupProjects } from '@/lib/projects';
+import { getGroupTech } from '@/lib/projects';
 
 export default function ProjectGroupCard({ group }: { group: ProjectGroup }) {
   const { lang } = useLanguage();
@@ -14,8 +14,8 @@ export default function ProjectGroupCard({ group }: { group: ProjectGroup }) {
   const title = lang === 'pt' && group.ptTitle ? group.ptTitle : group.title;
   const overview = lang === 'pt' && group.ptOverview ? group.ptOverview : group.overview;
 
-  const tagProjects = getGroupProjects(group);
-  const tags = [...new Set(tagProjects.flatMap((p) => p.tech))];
+  const tags = getGroupTech(group);
+  const docsLabel = lang === 'pt' ? 'Documentação do projeto' : 'Project documentation';
 
   const repoCount = group.projectRepoNames.length;
 
@@ -49,12 +49,27 @@ export default function ProjectGroupCard({ group }: { group: ProjectGroup }) {
                 ? 'repository'
                 : 'repositories'}
           </span>
-          <Button variant="outline" size="sm" asChild className="gap-1.5">
-            <Link href={`/projects/${group.slug}`}>
-              {lang === 'pt' ? 'Ver detalhes' : 'View details'}
-              <ArrowRight className="h-4 w-4" />
-            </Link>
-          </Button>
+          <div className="flex gap-2">
+            {group.docsUrl && (
+              <Button variant="outline" size="sm" asChild>
+                <a
+                  href={group.docsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={docsLabel}
+                  title={docsLabel}
+                >
+                  <BookOpen className="h-4 w-4" />
+                </a>
+              </Button>
+            )}
+            <Button variant="outline" size="sm" asChild className="gap-1.5">
+              <Link href={`/projects/${group.slug}`}>
+                {lang === 'pt' ? 'Ver detalhes' : 'View details'}
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </Button>
+          </div>
         </div>
       </CardContent>
     </Card>

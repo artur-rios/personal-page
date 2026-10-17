@@ -9,13 +9,15 @@ const nextConfig: NextConfig = {
     APP_COMMIT: process.env.VERCEL_GIT_COMMIT_SHA ?? '',
     APP_ENVIRONMENT: process.env.VERCEL_ENV ?? 'development',
   },
-  images: {
-    remotePatterns: [
+  // The Heimdall group covered only the API until its UI joined it under one slug.
+  async redirects() {
+    return [
       {
-        protocol: 'https',
-        hostname: 'opengraph.githubassets.com',
+        source: '/projects/heimdall-api',
+        destination: '/projects/heimdall',
+        permanent: true,
       },
-    ],
+    ];
   },
 };
 
