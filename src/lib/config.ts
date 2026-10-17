@@ -15,8 +15,7 @@ export const navLinks: MenuLink[] = [
   {
     title: 'Resume',
     ptTitle: 'Currículo',
-    href: 'https://drive.google.com/file/d/1_BXPAiYVmTiGu5KFb8rGhZ-SGCQ2s0LJ/view',
-    ptHref: 'https://drive.google.com/file/d/1rmV9vAzr0w1pzMKDjzqY43_nm3c8JguQ/view',
+    href: '/resume',
   },
   {
     title: 'GitHub',

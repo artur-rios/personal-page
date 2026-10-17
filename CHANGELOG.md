@@ -17,6 +17,9 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - The projects page can be filtered by technology, and the C#, Python, Rust and Flutter / Dart
   cards on the home page link to their projects.
 - Project cards with a documentation site link to it.
+- A resume page at `/resume`, in English and Portuguese, matching the PDF resume, with a button
+  that downloads the PDF. The PDFs are served by the site itself, and the Resume links in the menu
+  and the footer open the page instead of the PDF on Google Drive.
 
 ### Changed
 
