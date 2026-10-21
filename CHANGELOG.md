@@ -7,6 +7,8 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.2.0] - 2026-10-21
+
 ### Added
 
 - A Lab link in the menu and the footer, to the personal lab site.
@@ -70,6 +72,7 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Contact form messages containing `&`, `#` or line breaks reach the e-mail client intact.
 - A typo in the Portuguese description of Alexandria UI.
 
-[Unreleased]: https://github.com/artur-rios/personal-page/compare/v1.1.0...develop
+[Unreleased]: https://github.com/artur-rios/personal-page/compare/v1.2.0...develop
+[1.2.0]: https://github.com/artur-rios/personal-page/compare/v1.1.0...v1.2.0
 [1.1.0]: https://github.com/artur-rios/personal-page/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/artur-rios/personal-page/releases/tag/v1.0.0
