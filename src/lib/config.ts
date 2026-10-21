@@ -31,6 +31,10 @@ export const navLinks: MenuLink[] = [
     href: '/projects',
   },
   {
+    title: 'Lab',
+    href: 'https://artur-rios.github.io/personal-lab/',
+  },
+  {
     title: 'Contact',
     ptTitle: 'Contato',
     href: '/contact',
