@@ -7,6 +7,14 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added
+
+- A Lab link in the menu and the footer, to the personal lab site.
+
+### Fixed
+
+- The menu no longer runs into the theme and language buttons on narrower desktop screens.
+
 ## [1.1.0] - 2026-10-17
 
 ### Added
