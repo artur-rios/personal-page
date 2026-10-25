@@ -1,0 +1,11 @@
+{
+  "extends": ["local>artur-rios/yggdrasil//renovate/default"],
+  "packageRules": [
+    {
+      "description": "Minor and patch updates land together; major updates get a pull request each (dependabot.yml's npm group).",
+      "matchManagers": ["npm"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "groupName": "npm"
+    }
+  ]
+}
