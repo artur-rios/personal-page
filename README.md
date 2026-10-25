@@ -4,9 +4,12 @@ Source for Artur Rios' personal website: a short bio, the technologies and cloud
 providers he works with, a catalogue of open source projects and a contact form.
 The site is available in English and Brazilian Portuguese.
 
+The repository lives at <https://git.techcraftsmen.net/artur-rios/personal-page>; the GitHub
+repository is a read-only mirror of it.
+
 ## Stack
 
-- [Next.js](https://nextjs.org) 16 (App Router, fully static output)
+- [Next.js](https://nextjs.org) 16 (App Router, server-rendered, run from its standalone output in a Docker image)
 - [React](https://react.dev) 19 and [TypeScript](https://www.typescriptlang.org)
 - [Tailwind CSS](https://tailwindcss.com) 4 with [shadcn/ui](https://ui.shadcn.com) components
 - [next-themes](https://github.com/pacocoursey/next-themes) for light/dark mode
@@ -17,6 +20,8 @@ The site is available in English and Brazilian Portuguese.
 Requires Node.js 20.9 or later.
 
 ```bash
+git clone https://git.techcraftsmen.net/artur-rios/personal-page.git
+cd personal-page
 npm install
 npm run dev
 ```
@@ -39,12 +44,24 @@ Open [http://localhost:3000](http://localhost:3000) to see the site.
 
 ```text
 src/
-  app/          Routes: home, /projects, /projects/[slug] and /contact
+  app/          Routes: home, /projects, /projects/[slug], /contact and /healthz
   components/   Page sections and shadcn/ui primitives (components/ui)
   lib/          Navigation links, project data and helpers
   types/        Shared content types
 public/         Icons and images
+ci/             The scripts Jenkins runs (yggdrasil.yml): lint-and-build and the branch policy
+Dockerfile      The image the site is deployed as
 ```
+
+### The image
+
+```bash
+docker build -t personal-page --build-arg GIT_COMMIT=$(git rev-parse HEAD) --build-arg YGG_ENVIRONMENT=production .
+docker run --rm -p 8080:8080 personal-page
+```
+
+It serves on port 8080 as a non-root user and answers `/healthz`. `GIT_COMMIT` and `YGG_ENVIRONMENT`
+set the version label in the footer.
 
 ### Editing content
 
