@@ -13,6 +13,11 @@ cd "$(dirname "$0")/.."
 head_ref=${1:-${HEAD_REF:-}}
 base_ref=${2:-${BASE_REF:-}}
 
+if [ -z "$head_ref" ] && [ -z "$base_ref" ]; then
+  echo "ci/branch-policy.sh: no refs: set HEAD_REF and BASE_REF, or pass <head-ref> <base-ref>" >&2
+  exit 2
+fi
+
 case $base_ref:$head_ref in
   main:release/[0-9]*.[0-9]*.[0-9]*) ;;
   *) echo "'$head_ref' -> '$base_ref': nothing more to check."; exit 0 ;;
