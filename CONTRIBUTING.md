@@ -92,7 +92,9 @@ compare links at the bottom, and set `1.4.0` as `version` in `package.json` (`np
    — Jenkins deploys the release candidate to homologation. Check it there before step 2.
 2. Open a pull request `release/1.4.0 → main`.
 3. When the branch policy and the checks on the pull request pass, Jenkins deploys the release to
-   production. Once that succeeds it merges the pull request (a merge commit, and the release branch is
-   deleted) and tags the merge commit `v1.4.0`. Nobody merges or tags by hand.
+   production. Once that succeeds it merges the pull request (a merge commit) and tags the merge commit
+   `v1.4.0`. Nobody merges or tags by hand. Then Jenkins publishes the release on Forgejo and GitHub,
+   with the CHANGELOG section of `1.4.0` as its notes. The protected `release/*` branch is kept after the
+   merge: delete old ones by hand.
 4. If the production deployment fails, nothing is merged or tagged. Fix it on `develop` through a `fix/`
    branch and cut a new release; production keeps running the previous version meanwhile.

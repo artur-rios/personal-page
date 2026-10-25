@@ -34,11 +34,14 @@ Open [http://localhost:3000](http://localhost:3000) to see the site.
 | ---------------------- | ---------------------------------------- |
 | `npm run dev`          | Start the development server             |
 | `npm run build`        | Create a production build                |
-| `npm run start`        | Serve the production build               |
+| `npm run start`        | Serve the production build locally       |
 | `npm run lint`         | Lint the project with ESLint             |
 | `npm run typecheck`    | Type-check the project with TypeScript   |
 | `npm run format`       | Format the project with Prettier         |
 | `npm run format:check` | Check formatting without writing changes |
+
+Production does not use `npm run start`: the image runs `node .next/standalone/server.js` (`node server.js` from
+`/app`). `next start` (`npm run start`) is only for local use and warns with `output: 'standalone'`.
 
 ## Project structure
 
