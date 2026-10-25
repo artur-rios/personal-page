@@ -1,0 +1,20 @@
+# What Jenkins checks for this repository, read by the pipeline of the yggdrasil installation that runs it (yggdrasil's
+# docs/catalog.md, "Repository pipeline file", has every field). It is data, never code: images (pinned by version and
+# digest, which Renovate keeps up to date: the owner merges those changes), commands, globs and the names of Jenkins
+# credentials. The commands are scripts under ci/ that run from the repository's root, so you can run them on your own
+# machine too. The site is the application personal-page: develop deploys development, release/* homologation and the
+# release pull request production (its Dockerfile builds the image); Jenkins merges that pull request and tags v*.
+#
+# Check it where the catalog is, in the yggdrasil checkout:
+#   python3 scripts/pipeline_config.py describe personal-page <this repository's checkout>
+
+checks:
+  lint-and-build: # ci.yml's Lint and build: npm ci, lint, format:check, typecheck, build (Node 24, as the workflow)
+    image: node:24.22.1-alpine3.24@sha256:06d7adf3e0ef61a13f1d28682726366f97a15aa1888c934d3ecec86c33918b53
+    run: ci/lint-and-build.sh
+
+# The part of the old Branch Policy workflow the common branch policy does not know: package.json carries the release's
+# version (ci/branch-policy.sh).
+branchPolicy:
+  image: alpine:3.24.3@sha256:be2656061b536c1883c4034790e21d0a09c5aaaf51968b89368a3c0371ea2c9a
+  run: sh ci/branch-policy.sh
