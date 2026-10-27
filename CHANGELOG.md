@@ -7,6 +7,11 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Changed
+
+- The site is served from its own server instead of Vercel, and the documentation and Lab links
+  point at `docs.artur-rios.tech` and `lab.artur-rios.tech`.
+
 ## [1.2.0] - 2026-10-21
 
 ### Added
