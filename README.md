@@ -1,5 +1,11 @@
 # Personal Page
 
+> [!NOTE]
+> This is the real, open-source code of personal-page. Its home is Forgejo, at
+> https://git.techcraftsmen.net/artur-rios/personal-page; the copy on GitHub is a read-only mirror, for viewing only, and
+> its issues and pull requests are not followed. If you want to contribute, email me at
+> arturdev@duck.com.
+
 Source for Artur Rios' personal website: a short bio, the technologies and cloud
 providers he works with, a catalogue of open source projects and a contact form.
 The site is available in English and Brazilian Portuguese.
