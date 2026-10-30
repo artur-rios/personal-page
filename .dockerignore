@@ -1,0 +1,16 @@
+.git
+.github
+.claude
+.idea
+.superpowers
+docs
+ci
+node_modules
+.next
+out
+coverage
+.env*
+*.tsbuildinfo
+npm-debug.log*
+Dockerfile
+.dockerignore

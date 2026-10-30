@@ -1,12 +1,16 @@
 # Contributing
 
+This repository lives at <https://git.techcraftsmen.net/artur-rios/personal-page>; the GitHub repository is a
+read-only mirror of it. Open pull requests on the git server.
+
 ## Prerequisites
 
 Node.js 20.9 or later. After cloning, run `npm install`.
 
 ## Checks
 
-The gate before every pull request is the same one CI runs, passing:
+The gate before every pull request is the same one Jenkins runs as the `lint-and-build` check
+([`ci/lint-and-build.sh`](ci/lint-and-build.sh)), passing:
 
 ```bash
 npm run lint && npm run format:check && npm run typecheck && npm run build
@@ -29,10 +33,11 @@ Names are lowercase: letters, digits, `.`, `_` and `-`. A `release/` branch is a
 `develop` and carries no commits of its own: a fix for a release lands on `develop` through a
 `fix/` branch and a new release branch is cut.
 
-The **Branch Policy** workflow checks all of this on every pull request and is a required check
-on `develop` and `main`, together with CI's **Lint and build**. Pull requests into `main` also need
-Vercel's preview deployment of the release to have succeeded (the **Vercel** status). Tags `v*`
-cannot be moved or deleted once created.
+Jenkins runs the **branch policy** on every pull request into `develop` or `main`, and the
+`lint-and-build` check, and all of them are required. Into `develop` only from `feature/` or `fix/` branches
+(or Renovate's) cut from `develop`; into `main` only from a `release/<major>.<minor>.<patch>` branch whose
+every commit is already on `develop`, whose version has no tag yet and whose `package.json` says that version
+([`ci/branch-policy.sh`](ci/branch-policy.sh)). Tags `v*` cannot be moved or deleted once created.
 
 The repository owner can bypass these rules. That is for emergencies, not for routine work.
 
@@ -56,23 +61,26 @@ version number promises is about the people who visit it and link to it:
   update, a dependency update.
 
 The release version is the name of the release branch, and `version` in `package.json` must say the
-same: the Branch Policy workflow refuses a `release/x.y.z → main` pull request whose `package.json`
+same: the branch policy refuses a `release/x.y.z → main` pull request whose `package.json`
 does not say `x.y.z`, or whose version already has a tag.
 
 The footer of every page shows the running version, read from `package.json` at build time
-(`next.config.ts`), so setting it is what makes the release visible on the site. Vercel preview
-deployments add the short commit they were built from, since `develop` and a release candidate
-carry the previous release's version until the changelog is finalized.
+(`next.config.ts`), so setting it is what makes the release visible on the site. The development and
+homologation deployments add the short commit they were built from, since `develop` and a release
+candidate carry the previous release's version until the changelog is finalized.
 
 ## Releasing
 
-The site is hosted on [Vercel](https://vercel.com), which deploys every pushed branch:
+The site is built into an image by its [`Dockerfile`](Dockerfile) and deployed by Jenkins, from the commit it
+is deploying (`GIT_COMMIT` and `YGG_ENVIRONMENT` are the build arguments the footer's version label reads):
 
-| Event                                                  | Deploys to                                               |
-| ------------------------------------------------------ | -------------------------------------------------------- |
-| Push to a `feature/` or `fix/` branch, or to `develop` | a Vercel **preview** deployment                          |
-| Push of a `release/x.y.z` branch                       | a Vercel **preview** deployment — the release candidate  |
-| Merge of `release/x.y.z` into `main`                   | **production** (`https://www.artur-rios.tech`), then tag |
+| Event                                | Deploys to                                                          |
+| ------------------------------------ | ------------------------------------------------------------------- |
+| Push to `develop`                    | **development** (`https://www-dev.artur-rios.tech`)                 |
+| Push of a `release/x.y.z` branch     | **homologation** (`https://www-hml.artur-rios.tech`), the candidate |
+| Merge of `release/x.y.z` into `main` | **production** (`https://www.artur-rios.tech`), then tag            |
+
+`https://artur-rios.tech` redirects to `https://www.artur-rios.tech`.
 
 Before cutting the release, finalize [CHANGELOG.md](./CHANGELOG.md) on `develop` through a normal
 `feature/` or `fix/` pull request, since the release branch can carry no commits of its own: rename
@@ -81,16 +89,12 @@ compare links at the bottom, and set `1.4.0` as `version` in `package.json` (`np
 --no-git-tag-version` also updates `package-lock.json`).
 
 1. `git switch develop && git pull && git switch -c release/1.4.0 && git push -u origin release/1.4.0`
-   — Vercel builds a preview of the release. Check it there before step 2.
+   — Jenkins deploys the release candidate to homologation. Check it there before step 2.
 2. Open a pull request `release/1.4.0 → main`.
-3. When every check on the pull request passes, merge it with a merge commit. The release branch is
-   deleted on merge.
-4. Vercel deploys `main` to production. When the deployment succeeds, the **Release** workflow tags
-   the merge commit `v1.4.0` and creates the GitHub release of that name, with notes generated from
-   the pull requests merged since the previous tag; CHANGELOG.md is the curated record.
-5. If the production deployment fails, nothing is tagged. Fix it on `develop` through a `fix/`
-   branch and cut a new release; to go back to the previous version meanwhile, promote its
-   deployment again from the Vercel dashboard (Instant Rollback).
-
-If a release's tag is missing because GitHub never received the deployment event, run the
-**Release** workflow by hand on `main` (Actions → Release → Run workflow).
+3. When the branch policy and the checks on the pull request pass, Jenkins deploys the release to
+   production. Once that succeeds it merges the pull request (a merge commit) and tags the merge commit
+   `v1.4.0`. Nobody merges or tags by hand. Then Jenkins publishes the release on Forgejo and GitHub,
+   with the CHANGELOG section of `1.4.0` as its notes. The protected `release/*` branch is kept after the
+   merge: delete old ones by hand.
+4. If the production deployment fails, nothing is merged or tagged. Fix it on `develop` through a `fix/`
+   branch and cut a new release; production keeps running the previous version meanwhile.

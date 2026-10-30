@@ -32,7 +32,7 @@ export const navLinks: MenuLink[] = [
   },
   {
     title: 'Lab',
-    href: 'https://artur-rios.github.io/personal-lab/',
+    href: 'https://lab.artur-rios.tech/',
   },
   {
     title: 'Contact',

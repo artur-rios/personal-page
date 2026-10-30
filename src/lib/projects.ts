@@ -7,7 +7,7 @@ export const dotnetLibraries: Project[] = [
     title: 'Dotnet Configuration',
     description: 'Lightweight, composable configuration loader for .NET.',
     ptDescription: 'Carregador de configuração leve e combinável para .NET.',
-    websiteUrl: 'https://artur-rios.github.io/dotnet-configuration',
+    websiteUrl: 'https://docs.artur-rios.tech/dotnet-configuration',
     websiteLabel: 'docs',
     githubUrl: 'https://github.com/artur-rios/dotnet-configuration',
     repoOwner: 'artur-rios',
@@ -18,7 +18,7 @@ export const dotnetLibraries: Project[] = [
     title: 'Dotnet Data',
     description: 'Utilities for the data access layer on .NET projects.',
     ptDescription: 'Utilitários para a camada de acesso a dados em projetos .NET.',
-    websiteUrl: 'https://artur-rios.github.io/dotnet-data/',
+    websiteUrl: 'https://docs.artur-rios.tech/dotnet-data/',
     websiteLabel: 'docs',
     githubUrl: 'https://github.com/artur-rios/dotnet-data',
     repoOwner: 'artur-rios',
@@ -42,7 +42,7 @@ export const dotnetLibraries: Project[] = [
       'A clean, minimal API for creating, validating and reading JSON Web Tokens (JWT).',
     ptDescription:
       'Uma API limpa e minimalista para criar, validar e ler JSON Web Tokens (JWT).',
-    websiteUrl: 'https://artur-rios.github.io/dotnet-jwt/',
+    websiteUrl: 'https://docs.artur-rios.tech/dotnet-jwt/',
     websiteLabel: 'docs',
     githubUrl: 'https://github.com/artur-rios/dotnet-jwt',
     repoOwner: 'artur-rios',
@@ -54,7 +54,7 @@ export const dotnetLibraries: Project[] = [
     description: 'A flexible and feature-rich logging library for .NET applications.',
     ptDescription:
       'Uma biblioteca de logging flexível e rica em recursos para aplicações .NET.',
-    websiteUrl: 'https://artur-rios.github.io/dotnet-logging/',
+    websiteUrl: 'https://docs.artur-rios.tech/dotnet-logging/',
     websiteLabel: 'docs',
     githubUrl: 'https://github.com/artur-rios/dotnet-logging',
     repoOwner: 'artur-rios',
@@ -67,7 +67,7 @@ export const dotnetLibraries: Project[] = [
       'A lightweight library that implements the mediator pattern on top of the built-in .NET dependency injection container.',
     ptDescription:
       'Uma biblioteca leve que implementa o padrão mediator sobre o container de injeção de dependência nativo do .NET.',
-    websiteUrl: 'https://artur-rios.github.io/dotnet-mediator/',
+    websiteUrl: 'https://docs.artur-rios.tech/dotnet-mediator/',
     websiteLabel: 'docs',
     githubUrl: 'https://github.com/artur-rios/dotnet-mediator',
     repoOwner: 'artur-rios',
@@ -80,7 +80,7 @@ export const dotnetLibraries: Project[] = [
       'Utilities for different messaging formats and protocols for .NET applications.',
     ptDescription:
       'Utilitários para diferentes formatos e protocolos de mensageria em aplicações .NET.',
-    websiteUrl: 'https://artur-rios.github.io/dotnet-messaging/',
+    websiteUrl: 'https://docs.artur-rios.tech/dotnet-messaging/',
     websiteLabel: 'docs',
     githubUrl: 'https://github.com/artur-rios/dotnet-messaging',
     repoOwner: 'artur-rios',
@@ -92,7 +92,7 @@ export const dotnetLibraries: Project[] = [
     description: 'A .NET helper library that standardizes process and data outputs.',
     ptDescription:
       'Uma biblioteca auxiliar para .NET que padroniza saídas de processos e dados.',
-    websiteUrl: 'https://artur-rios.github.io/dotnet-output/',
+    websiteUrl: 'https://docs.artur-rios.tech/dotnet-output/',
     websiteLabel: 'docs',
     githubUrl: 'https://github.com/artur-rios/dotnet-output',
     repoOwner: 'artur-rios',
@@ -104,7 +104,7 @@ export const dotnetLibraries: Project[] = [
     description: 'A small .NET library of test-support utilities for xUnit projects.',
     ptDescription:
       'Uma pequena biblioteca .NET com utilitários de apoio a testes para projetos xUnit.',
-    websiteUrl: 'https://artur-rios.github.io/dotnet-test-util/',
+    websiteUrl: 'https://docs.artur-rios.tech/dotnet-test-util/',
     websiteLabel: 'docs',
     githubUrl: 'https://github.com/artur-rios/dotnet-test-util',
     repoOwner: 'artur-rios',
@@ -115,7 +115,7 @@ export const dotnetLibraries: Project[] = [
     title: 'Dotnet Util',
     description: 'Utilities for common development tasks in .NET.',
     ptDescription: 'Utilitários para tarefas comuns de desenvolvimento em .NET.',
-    websiteUrl: 'https://artur-rios.github.io/dotnet-util/',
+    websiteUrl: 'https://docs.artur-rios.tech/dotnet-util/',
     websiteLabel: 'docs',
     githubUrl: 'https://github.com/artur-rios/dotnet-util',
     repoOwner: 'artur-rios',
@@ -128,7 +128,7 @@ export const dotnetLibraries: Project[] = [
       'A thin, opinionated model-validation layer for .NET built on top of FluentValidation.',
     ptDescription:
       'Uma camada de validação de modelos enxuta e opinativa para .NET, construída sobre o FluentValidation.',
-    websiteUrl: 'https://artur-rios.github.io/dotnet-validation/',
+    websiteUrl: 'https://docs.artur-rios.tech/dotnet-validation/',
     websiteLabel: 'docs',
     githubUrl: 'https://github.com/artur-rios/dotnet-validation',
     repoOwner: 'artur-rios',
@@ -139,7 +139,7 @@ export const dotnetLibraries: Project[] = [
     title: 'Dotnet WebAPI Util',
     description: 'Utilities for building ASP.NET Core web APIs.',
     ptDescription: 'Utilitários para construir web APIs com ASP.NET Core.',
-    websiteUrl: 'https://artur-rios.github.io/dotnet-webapi-util/',
+    websiteUrl: 'https://docs.artur-rios.tech/dotnet-webapi-util/',
     websiteLabel: 'docs',
     githubUrl: 'https://github.com/artur-rios/dotnet-webapi-util',
     repoOwner: 'artur-rios',
@@ -302,7 +302,7 @@ export const projectGroups: ProjectGroup[] = [
       'A personal library system that indexes, organizes, and surfaces on-disk media and documents.',
     ptOverview:
       'Um sistema de biblioteca pessoal que indexa, organiza e disponibiliza arquivos de mídia e documentos.',
-    docsUrl: 'https://artur-rios.github.io/alexandria-docs/',
+    docsUrl: 'https://docs.artur-rios.tech/alexandria-docs/',
     projectRepoNames: ['alexandria-api', 'alexandria-ui'],
   },
   {
@@ -339,7 +339,7 @@ export const projectGroups: ProjectGroup[] = [
       'A centralized identity management system with scope-based multi-tenancy: an ASP.NET Core API and the Flutter application that drives it.',
     ptOverview:
       'Um sistema centralizado de gerenciamento de identidade com multi-tenancy baseado em escopos: uma API em ASP.NET Core e a aplicação Flutter que a utiliza.',
-    docsUrl: 'https://artur-rios.github.io/heimdall-docs/',
+    docsUrl: 'https://docs.artur-rios.tech/heimdall-docs/',
     projectRepoNames: ['heimdall-api', 'heimdall-ui'],
   },
   {
@@ -349,7 +349,7 @@ export const projectGroups: ProjectGroup[] = [
       'A personal finance system that tracks your whole financial life in one place and turns it into tables, charts and projections.',
     ptOverview:
       'Um sistema de finanças pessoais que reúne toda a sua vida financeira em um só lugar e a transforma em tabelas, gráficos e projeções.',
-    docsUrl: 'https://artur-rios.github.io/fortuna-docs/',
+    docsUrl: 'https://docs.artur-rios.tech/fortuna-docs/',
     projectRepoNames: ['fortuna-api', 'fortuna-ui'],
   },
   {
