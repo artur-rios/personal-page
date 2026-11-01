@@ -1,17 +1,8 @@
 # Personal Page
 
-> [!NOTE]
-> This is the real, open-source code of personal-page. Its home is Forgejo, at
-> https://git.techcraftsmen.net/artur-rios/personal-page; the copy on GitHub is a read-only mirror, for viewing only, and
-> its issues and pull requests are not followed. If you want to contribute, email me at
-> arturdev@duck.com.
-
 Source for Artur Rios' personal website: a short bio, the technologies and cloud
 providers he works with, a catalogue of open source projects and a contact form.
 The site is available in English and Brazilian Portuguese.
-
-The repository lives at <https://git.techcraftsmen.net/artur-rios/personal-page>; the GitHub
-repository is a read-only mirror of it.
 
 ## Stack
 
@@ -92,6 +83,9 @@ Work happens on `feature/` and `fix/` branches cut from `develop`, and releases
 go to production through `release/x.y.z` pull requests into `main`. See
 [CONTRIBUTING.md](CONTRIBUTING.md) for the branching model and how to release,
 and [CHANGELOG.md](CHANGELOG.md) for what changed in each version.
+
+The GitHub repository is a read-only mirror for the real, open-source code of personal-page. Its home is Forgejo, at
+https://git.techcraftsmen.net/artur-rios/personal-page. If you want to contribute, e-mail me at arturdev@duck.com.
 
 ## License
 

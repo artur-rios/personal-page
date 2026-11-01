@@ -35,6 +35,11 @@ export const navLinks: MenuLink[] = [
     href: 'https://lab.artur-rios.tech/',
   },
   {
+    title: 'Support',
+    ptTitle: 'Apoie',
+    href: '/support',
+  },
+  {
     title: 'Contact',
     ptTitle: 'Contato',
     href: '/contact',
