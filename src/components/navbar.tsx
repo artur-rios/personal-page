@@ -35,7 +35,7 @@ export default function Navbar() {
 
   return (
     <header className="select-none">
-      <nav className="mx-auto justify-between px-4 md:flex md:items-center md:px-8 lg:max-w-7xl">
+      <nav className="mx-auto justify-between px-4 md:flex md:items-center md:gap-4 md:px-8 lg:max-w-7xl">
         <div>
           <div className="flex items-center justify-between py-3 md:block md:py-5">
             <Link href="/" onClick={handleClick}>
@@ -93,7 +93,7 @@ export default function Navbar() {
               navbar ? 'block' : 'hidden'
             }`}
           >
-            <ul className="flex flex-col items-center space-y-4 text-primary opacity-60 md:flex-row md:space-x-6 md:space-y-0">
+            <ul className="flex flex-col items-center space-y-4 text-primary opacity-60 md:flex-row md:space-x-3 md:space-y-0 md:text-sm lg:space-x-6 lg:text-base">
               {navLinks.map((link) => {
                 const { title, href, linkProps } = resolveNavLink(link, lang);
                 return (

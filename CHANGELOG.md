@@ -7,6 +7,11 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added
+
+- A Support page, linked from the menu and the footer, with ways to sponsor the work through
+  Buy Me a Coffee and GitHub Sponsors.
+
 ## [1.2.1] - 2026-10-29
 
 ### Changed
