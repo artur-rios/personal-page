@@ -7,6 +7,15 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added
+
+- Professional and social media links on the Contact page: GitHub, LinkedIn, Reddit, X, Instagram
+  and Letterboxd.
+
+### Changed
+
+- GitHub and LinkedIn are no longer in the menu and the footer, and are now on the Contact page.
+
 ## [1.3.0] - 2026-11-01
 
 ### Added
