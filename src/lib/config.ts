@@ -18,14 +18,6 @@ export const navLinks: MenuLink[] = [
     href: '/resume',
   },
   {
-    title: 'GitHub',
-    href: 'https://www.github.com/artur-rios',
-  },
-  {
-    title: 'LinkedIn',
-    href: 'https://www.linkedin.com/in/artur-rios',
-  },
-  {
     title: 'Projects',
     ptTitle: 'Projetos',
     href: '/projects',
