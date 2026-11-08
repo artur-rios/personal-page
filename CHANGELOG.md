@@ -7,6 +7,17 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.4.0] - 2026-11-08
+
+### Added
+
+- Professional and social media links on the Contact page: GitHub, LinkedIn, Reddit, X, Instagram
+  and Letterboxd.
+
+### Changed
+
+- GitHub and LinkedIn are no longer in the menu and the footer, and are now on the Contact page.
+
 ## [1.3.0] - 2026-11-01
 
 ### Added
@@ -86,7 +97,8 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Contact form messages containing `&`, `#` or line breaks reach the e-mail client intact.
 - A typo in the Portuguese description of Alexandria UI.
 
-[Unreleased]: https://github.com/artur-rios/personal-page/compare/v1.3.0...develop
+[Unreleased]: https://github.com/artur-rios/personal-page/compare/v1.4.0...develop
+[1.4.0]: https://github.com/artur-rios/personal-page/compare/v1.3.0...v1.4.0
 [1.3.0]: https://github.com/artur-rios/personal-page/compare/v1.2.1...v1.3.0
 [1.2.1]: https://github.com/artur-rios/personal-page/compare/v1.2.0...v1.2.1
 [1.2.0]: https://github.com/artur-rios/personal-page/compare/v1.1.0...v1.2.0
