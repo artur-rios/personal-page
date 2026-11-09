@@ -95,8 +95,17 @@ export async function POST(request: Request): Promise<Response> {
     return answer('unavailable', 502);
   }
 
-  if (!(await verifyTurnstile(parsed.data.turnstileToken, settings.turnstileSecretKey))) {
+  const turnstile = await verifyTurnstile(
+    parsed.data.turnstileToken,
+    settings.turnstileSecretKey,
+  );
+
+  if (turnstile === 'failed') {
     return answer('rejected', 403);
+  }
+
+  if (turnstile === 'unavailable') {
+    return answer('unavailable', 502);
   }
 
   return (await sendToHermes(parsed.data, settings))

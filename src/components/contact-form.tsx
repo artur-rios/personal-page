@@ -33,12 +33,24 @@ interface ContactFormProps {
 
 type Outcome = ContactStatus | 'idle';
 
-function OwnerAddress({ ownerEmail, lang }: { ownerEmail: string; lang: string }) {
+function OwnerAddress({
+  ownerEmail,
+  lang,
+  failed = true,
+}: {
+  ownerEmail: string;
+  lang: string;
+  failed?: boolean;
+}) {
+  const failure =
+    lang === 'pt'
+      ? 'Não foi possível enviar pelo site. Escreva para '
+      : 'The message could not be sent from here. Please write to ';
+  const invitation = lang === 'pt' ? 'Escreva para ' : 'Write to me at ';
+
   return (
     <p className="py-8 text-center" role="status">
-      {lang === 'pt'
-        ? 'Não foi possível enviar pelo site. Escreva para '
-        : 'The message could not be sent from here. Please write to '}
+      {failed ? failure : invitation}
       <a className="underline" href={`mailto:${ownerEmail}`}>
         {ownerEmail}
       </a>
@@ -51,6 +63,7 @@ export default function ContactForm({ siteKey, ownerEmail }: ContactFormProps) {
   const { lang } = useLanguage();
   const [outcome, setOutcome] = useState<Outcome>('idle');
   const [token, setToken] = useState('');
+  const [widgetFailed, setWidgetFailed] = useState(false);
   const [resetKey, setResetKey] = useState(0);
 
   const formSchema = z.object({
@@ -90,6 +103,14 @@ export default function ContactForm({ siteKey, ownerEmail }: ContactFormProps) {
     },
   });
 
+  function receiveToken(received: string) {
+    setToken(received);
+
+    if (received) {
+      setWidgetFailed(false);
+    }
+  }
+
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setOutcome('idle');
 
@@ -123,7 +144,7 @@ export default function ContactForm({ siteKey, ownerEmail }: ContactFormProps) {
   }
 
   if (!siteKey) {
-    return <OwnerAddress ownerEmail={ownerEmail} lang={lang} />;
+    return <OwnerAddress ownerEmail={ownerEmail} lang={lang} failed={false} />;
   }
 
   return (
@@ -198,7 +219,12 @@ export default function ContactForm({ siteKey, ownerEmail }: ContactFormProps) {
             />
           </label>
         </div>
-        <TurnstileWidget siteKey={siteKey} onToken={setToken} resetKey={resetKey} />
+        <TurnstileWidget
+          siteKey={siteKey}
+          onToken={receiveToken}
+          onFailure={() => setWidgetFailed(true)}
+          resetKey={resetKey}
+        />
         <Button
           className="mt-4 w-full"
           type="submit"
@@ -227,7 +253,7 @@ export default function ContactForm({ siteKey, ownerEmail }: ContactFormProps) {
               : 'The verification failed. Please try again.'}
           </p>
         )}
-        {outcome === 'unavailable' && (
+        {(outcome === 'unavailable' || widgetFailed) && (
           <OwnerAddress ownerEmail={ownerEmail} lang={lang} />
         )}
       </form>

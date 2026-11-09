@@ -60,7 +60,7 @@ docker build -t personal-page --build-arg GIT_COMMIT=$(git rev-parse HEAD) --bui
 docker run --rm -p 8080:8080 personal-page
 ```
 
-The contact form reads these variables when the container runs, none of which reach the browser except the site key:
+The contact form reads these variables when the container runs, of which only the site key and the owner's address reach the browser:
 
 | Variable               | Purpose                                                                |
 | ---------------------- | ---------------------------------------------------------------------- |

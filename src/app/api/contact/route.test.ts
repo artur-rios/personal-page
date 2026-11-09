@@ -94,6 +94,12 @@ afterEach(() => {
 });
 
 describe('POST /api/contact', () => {
+  it('given the specification, when reading the limits, then they are the ones Hermes applies', () => {
+    expect(MAX_BODY_BYTES).toBe(65_536);
+    expect(MAX_SUBJECT_LENGTH).toBe(200);
+    expect(MAX_MESSAGE_LENGTH).toBe(10_000);
+  });
+
   describe('main flow', () => {
     it('given a valid message, when submitted, then tells the visitor it was accepted', async () => {
       const response = await send();
@@ -243,33 +249,76 @@ describe('POST /api/contact', () => {
   });
 
   describe('AF-05: Turnstile verification fails', () => {
-    it('given a failed verification, when submitted, then it is rejected without calling Hermes', async () => {
-      turnstileAnswer = { status: 200, body: { success: false } };
+    it.each(['invalid-input-response', 'timeout-or-duplicate', 'bad-request'])(
+      'given Turnstile refuses the token with %s, when submitted, then it is rejected without calling Hermes',
+      async (code) => {
+        turnstileAnswer = {
+          status: 200,
+          body: { success: false, 'error-codes': [code] },
+        };
 
-      const response = await send();
+        const response = await send();
 
-      expect(response.status).toBe(403);
-      expect(await statusOf(response)).toBe('rejected');
-      expect(callsTo(`${HERMES}/api/emails`)).toHaveLength(0);
+        expect(response.status).toBe(403);
+        expect(await statusOf(response)).toBe('rejected');
+        expect(callsTo(`${HERMES}/api/emails`)).toHaveLength(0);
+      },
+    );
+
+    it.each(['invalid-input-secret', 'missing-input-secret', 'internal-error'])(
+      'given Turnstile answers %s, when submitted, then the page shows the address without calling Hermes',
+      async (code) => {
+        turnstileAnswer = {
+          status: 200,
+          body: { success: false, 'error-codes': [code] },
+        };
+
+        const response = await send();
+
+        expect(response.status).toBe(502);
+        expect(await statusOf(response)).toBe('unavailable');
+        expect(callsTo(`${HERMES}/api/emails`)).toHaveLength(0);
+      },
+    );
+
+    it('given a refusal, when it is logged, then its code is there to diagnose it', async () => {
+      const warn = vi.spyOn(console, 'warn').mockImplementation(() => undefined);
+      turnstileAnswer = {
+        status: 200,
+        body: { success: false, 'error-codes': ['invalid-input-secret'] },
+      };
+
+      await send();
+
+      expect(warn.mock.calls.flat().join(' ')).toContain('invalid-input-secret');
     });
 
-    it('given Turnstile cannot be reached, when submitted, then it is rejected without calling Hermes', async () => {
+    it('given Turnstile cannot be reached, when submitted, then the page shows the address without calling Hermes', async () => {
       turnstileAnswer = new Error('unreachable');
 
       const response = await send();
 
-      expect(response.status).toBe(403);
+      expect(response.status).toBe(502);
+      expect(await statusOf(response)).toBe('unavailable');
       expect(callsTo(`${HERMES}/api/emails`)).toHaveLength(0);
     });
 
-    it('given Turnstile answers something unreadable, when submitted, then it is rejected', async () => {
+    it('given Turnstile answers something unreadable, when submitted, then Hermes is not called', async () => {
       fetchMock.mockImplementationOnce(
         async () => new Response('not json', { status: 200 }),
       );
 
       const response = await send();
 
-      expect(response.status).toBe(403);
+      expect(response.status).toBe(502);
+      expect(callsTo(`${HERMES}/api/emails`)).toHaveLength(0);
+    });
+
+    it('given Turnstile answers without saying it succeeded, when submitted, then Hermes is not called', async () => {
+      turnstileAnswer = { status: 200, body: {} };
+
+      await send();
+
       expect(callsTo(`${HERMES}/api/emails`)).toHaveLength(0);
     });
   });
@@ -278,6 +327,7 @@ describe('POST /api/contact', () => {
     it.each([
       ['a limit has been reached', 429],
       ['delivery failed', 502],
+      ['it succeeded without accepting', 200],
       ['the recipient is refused', 403],
       ['the key is refused', 401],
       ['the request is refused', 400],

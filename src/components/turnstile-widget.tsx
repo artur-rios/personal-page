@@ -26,6 +26,8 @@ declare global {
 interface TurnstileWidgetProps {
   siteKey: string;
   onToken: (token: string) => void;
+  /** Turnstile could not load or run, so a token may never come. */
+  onFailure: () => void;
   /** A token works once, so changing this asks the visitor's browser for a new one. */
   resetKey: number;
 }
@@ -33,16 +35,19 @@ interface TurnstileWidgetProps {
 export default function TurnstileWidget({
   siteKey,
   onToken,
+  onFailure,
   resetKey,
 }: TurnstileWidgetProps) {
   const container = useRef<HTMLDivElement>(null);
   const widgetId = useRef<string | null>(null);
   const latestOnToken = useRef(onToken);
+  const latestOnFailure = useRef(onFailure);
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
     latestOnToken.current = onToken;
-  }, [onToken]);
+    latestOnFailure.current = onFailure;
+  }, [onToken, onFailure]);
 
   useEffect(() => {
     if (!ready || !container.current || !window.turnstile) {
@@ -54,7 +59,10 @@ export default function TurnstileWidget({
       sitekey: siteKey,
       callback: (token) => latestOnToken.current(token),
       'expired-callback': () => latestOnToken.current(''),
-      'error-callback': () => latestOnToken.current(''),
+      'error-callback': () => {
+        latestOnToken.current('');
+        latestOnFailure.current();
+      },
     });
 
     widgetId.current = id;
@@ -76,6 +84,7 @@ export default function TurnstileWidget({
       <Script
         src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"
         onReady={() => setReady(true)}
+        onError={() => latestOnFailure.current()}
       />
       <div ref={container} />
     </>
