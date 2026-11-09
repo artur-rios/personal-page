@@ -7,6 +7,12 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added
+
+- The contact form sends your message directly instead of opening your email app. It asks for your email address, so
+  replies reach you, and nothing is ever sent to that address automatically. If the message cannot be sent, the page
+  shows the address to write to.
+
 ## [1.4.0] - 2026-11-08
 
 ### Added
