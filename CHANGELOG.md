@@ -7,6 +7,8 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.5.0] - 2026-11-09
+
 ### Added
 
 - The contact form sends your message directly instead of opening your email app. It asks for your email address, so
@@ -103,7 +105,8 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Contact form messages containing `&`, `#` or line breaks reach the e-mail client intact.
 - A typo in the Portuguese description of Alexandria UI.
 
-[Unreleased]: https://github.com/artur-rios/personal-page/compare/v1.4.0...develop
+[Unreleased]: https://github.com/artur-rios/personal-page/compare/v1.5.0...develop
+[1.5.0]: https://github.com/artur-rios/personal-page/compare/v1.4.0...v1.5.0
 [1.4.0]: https://github.com/artur-rios/personal-page/compare/v1.3.0...v1.4.0
 [1.3.0]: https://github.com/artur-rios/personal-page/compare/v1.2.1...v1.3.0
 [1.2.1]: https://github.com/artur-rios/personal-page/compare/v1.2.0...v1.2.1
