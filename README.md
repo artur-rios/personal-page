@@ -60,6 +60,18 @@ docker build -t personal-page --build-arg GIT_COMMIT=$(git rev-parse HEAD) --bui
 docker run --rm -p 8080:8080 personal-page
 ```
 
+The contact form reads these variables when the container runs, none of which reach the browser except the site key:
+
+| Variable               | Purpose                                                                |
+| ---------------------- | ---------------------------------------------------------------------- |
+| `HERMES_BASE_URL`      | Hermes at its internal alias, e.g. `http://hermes-api.production:8080` |
+| `HERMES_API_KEY`       | The personal page's Hermes key                                         |
+| `CONTACT_OWNER_EMAIL`  | Where messages go, and the address shown when sending fails            |
+| `TURNSTILE_SECRET_KEY` | Cloudflare Turnstile secret key                                        |
+| `TURNSTILE_SITE_KEY`   | Cloudflare Turnstile site key                                          |
+
+Without them the form gives way to the owner's address.
+
 It serves on port 8080 as a non-root user and answers `/healthz`. `GIT_COMMIT` and `YGG_ENVIRONMENT`
 set the version label in the footer.
 

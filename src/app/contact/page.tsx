@@ -5,10 +5,14 @@ import HeadingText from '@/components/heading-text';
 import ContactForm from '@/components/contact-form';
 import Localized from '@/components/localized';
 import { Button } from '@/components/ui/button';
+import { resumeContact } from '@/lib/resume';
 
 export const metadata: Metadata = {
   title: 'Contact',
 };
+
+// The Turnstile site key is set per environment when the container runs, and the image is built once.
+export const dynamic = 'force-dynamic';
 
 const externalLinkProps = { target: '_blank', rel: 'noopener noreferrer' };
 
@@ -76,7 +80,10 @@ export default function Contact() {
         ))}
       </div>
 
-      <ContactForm />
+      <ContactForm
+        siteKey={process.env.TURNSTILE_SITE_KEY || undefined}
+        ownerEmail={process.env.CONTACT_OWNER_EMAIL || resumeContact.email}
+      />
     </main>
   );
 }
