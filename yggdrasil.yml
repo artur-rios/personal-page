@@ -10,7 +10,7 @@
 
 checks:
   lint-and-build: # ci.yml's Lint and build: npm ci, lint, format:check, typecheck, build (Node 24, as the workflow)
-    image: node:24.22.2-alpine3.24@sha256:a34ab6d7f6f4813f4d0c5469d74685604b962fbdbf5793a7bc7b4998ecb867c8
+    image: node:26.13.1-alpine3.24@sha256:6bd9ab43c0ec0190ca7b2d193906cb8b7edf6e7f4afa43ddeccd6452710bffb5
     run: ci/lint-and-build.sh
 
 # The part of the old Branch Policy workflow the common branch policy does not know: package.json carries the release's
