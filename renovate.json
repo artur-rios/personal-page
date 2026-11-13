@@ -6,6 +6,12 @@
       "matchManagers": ["npm"],
       "matchUpdateTypes": ["minor", "patch"],
       "groupName": "npm"
+    },
+    {
+      "description": "typescript-eslint (through eslint-config-next) supports only TypeScript >=4.8.4 <6.1.0, and with TypeScript 7 `eslint .` crashes while loading its parser (#26). Hold TypeScript at that range; raise or remove this rule when a typescript-eslint release supports the newer TypeScript.",
+      "matchManagers": ["npm"],
+      "matchPackageNames": ["typescript"],
+      "allowedVersions": "<6.1.0"
     }
   ]
 }
