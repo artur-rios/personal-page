@@ -8,7 +8,7 @@
 #                    APP_ENVIRONMENT, which the footer's version label (src/lib/version.ts) shows. They are public
 #                    values: never pass a secret as a build argument.
 # PUBLIC_HOST and PUBLIC_PATH (the stack passes them too) are not used: the site is served at its host's root.
-FROM node:24.22.2-alpine3.24@sha256:a34ab6d7f6f4813f4d0c5469d74685604b962fbdbf5793a7bc7b4998ecb867c8 AS build
+FROM node:26.13.1-alpine3.24@sha256:6bd9ab43c0ec0190ca7b2d193906cb8b7edf6e7f4afa43ddeccd6452710bffb5 AS build
 
 WORKDIR /app
 COPY package.json package-lock.json ./
@@ -22,7 +22,7 @@ ENV NEXT_TELEMETRY_DISABLED=1 \
     YGG_ENVIRONMENT=${YGG_ENVIRONMENT}
 RUN mkdir -p public && npm run build
 
-FROM node:24.22.2-alpine3.24@sha256:a34ab6d7f6f4813f4d0c5469d74685604b962fbdbf5793a7bc7b4998ecb867c8
+FROM node:26.13.1-alpine3.24@sha256:6bd9ab43c0ec0190ca7b2d193906cb8b7edf6e7f4afa43ddeccd6452710bffb5
 
 ARG GIT_COMMIT=
 ARG YGG_ENVIRONMENT=
