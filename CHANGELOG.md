@@ -7,6 +7,13 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.5.1] - 2026-11-14
+
+### Changed
+
+- Dependency updates, with no change to the pages: Next.js 16.4.6, React Hook Form 7.92 with its resolvers 7,
+  Lucide icons 1.73, and the site is built and served on Node.js 26.
+
 ## [1.5.0] - 2026-11-09
 
 ### Added
@@ -105,7 +112,8 @@ adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Contact form messages containing `&`, `#` or line breaks reach the e-mail client intact.
 - A typo in the Portuguese description of Alexandria UI.
 
-[Unreleased]: https://github.com/artur-rios/personal-page/compare/v1.5.0...develop
+[Unreleased]: https://github.com/artur-rios/personal-page/compare/v1.5.1...develop
+[1.5.1]: https://github.com/artur-rios/personal-page/compare/v1.5.0...v1.5.1
 [1.5.0]: https://github.com/artur-rios/personal-page/compare/v1.4.0...v1.5.0
 [1.4.0]: https://github.com/artur-rios/personal-page/compare/v1.3.0...v1.4.0
 [1.3.0]: https://github.com/artur-rios/personal-page/compare/v1.2.1...v1.3.0
